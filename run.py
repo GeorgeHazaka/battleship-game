@@ -1,6 +1,9 @@
 from random import randint
 
 player_board_with_ships = None
+
+computer_ships_positions_list = []
+
 class Board:
     """
     Main board class. Sets board size, the player's name
@@ -130,3 +133,17 @@ def player_coordinates_guess():
     print(f"Player guessed: ({guess_a_row}, {guess_a_column})")
 
     return [guess_a_row, guess_a_column]
+
+
+def computer_ships():
+    """
+    Creates a specific amount of computer ships
+    and returns a list of the computer ships positions (indexes)
+    """
+    while True:
+        random_num = randint(1, 25)
+        if computer_ships_positions_list.count(random_num) == 0:
+            computer_ships_positions_list.append(random_num)
+        if len(computer_ships_positions_list) == input_number_of_ships:
+            break
+    return computer_ships_positions_list
