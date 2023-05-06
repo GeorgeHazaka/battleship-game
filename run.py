@@ -352,3 +352,9 @@ def check_computer_guess():
         print("-" * 40)
         print(player_board_list)
         print("-" * 40)
+
+
+def score_results():
+    print("After this round, the scores are:")
+    print(f"{input_name}: {player_score}")
+    print(f"{computer_board.name}: {computer_score}")
