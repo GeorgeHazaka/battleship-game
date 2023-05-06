@@ -5,12 +5,14 @@ input_number_of_ships = None
 
 player_board_with_ships = None
 player_guess = None
+player_updated_board_list = None
 computer_updated_board_list = None
 
 player_score = 0
+computer_score = 0
 
-computer_ships_positions_list = []
 player_all_guesses_list = []
+computer_ships_positions_list = []
 
 class Board:
     """
@@ -211,10 +213,10 @@ def check_player_guess():
     Creates a function that checks whether the player
     has already chosen the same coordinates twice
     Checks whether player guess position is uqual to one of the computer ships position
-    If it is equal then the dot "." will become "w"
+    If it is equal then the Full stop sign "." will become "w"
     Updates the board and prints the updated board
     player_score gets increased by 1
-    If it is not equal then the dot "." will become "X" and then prints the new board
+    If it is not equal then the Full stop sign "." will become "X"
     Updates the board and prints the updated board
     """
         
@@ -295,4 +297,58 @@ def check_player_guess():
 
         print("-" * 40)
         print(computer_board_list)
+        print("-" * 40)
+
+
+def check_computer_guess():
+    """
+    Checks whether computer guess position is uqual to one of the player ships position
+    If it is equal then the At sign "@" will become "w"
+    Updates the board and prints the updated board
+    computer_score gets increased by 1
+    If it is not equal then the Full stop sign "." will become "X"
+    Updates the board and prints the updated board
+    """
+    computer_guess = [randint(1, 5), randint(1, 5)]
+    print(f"Computer guessed ({computer_guess[0]}, {computer_guess[1]})")
+    player_board_list = player_board_with_ships.split()
+
+    global player_updated_board_list
+    
+    if player_updated_board_list != None:
+        player_board_list = player_updated_board_list
+
+    if player_board_list[(computer_guess[0] * 5 - (5 - computer_guess[1])) - 1] == "@":
+        player_board_list[(computer_guess[0] * 5 - (5 - computer_guess[1])) - 1] = "w"
+        player_updated_board_list = [ch for ch in player_board_list]
+        print("Computer got a hit!")
+
+        for j in range(4, 25, 5):
+            player_board_list[j] += '\n'
+
+        for y in range(len(player_board_list)):
+            player_board_list[y] = "  " + player_board_list[y]
+
+        player_board_list = "".join(player_board_list)
+        print("-" * 40)
+        print(player_board_list)
+        print("-" * 40)
+
+        global computer_score
+        computer_score += 1
+
+    else:
+        player_board_list[(computer_guess[0] * 5 - (5 - computer_guess[1])) - 1] = "X"
+        player_updated_board_list = [ch for ch in player_board_list]
+        print("Computer missed this time.")
+
+        for j in range(4, 25, 5):
+            player_board_list[j] += '\n'
+
+        for y in range(len(player_board_list)):
+            player_board_list[y] = "  " + player_board_list[y]
+
+        player_board_list = "".join(player_board_list)
+        print("-" * 40)
+        print(player_board_list)
         print("-" * 40)
