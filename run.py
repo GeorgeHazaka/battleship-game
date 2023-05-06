@@ -1,5 +1,7 @@
 from random import randint
 
+input_name = None
+input_number_of_ships = None
 player_board_with_ships = None
 
 computer_ships_positions_list = []
@@ -142,8 +144,55 @@ def computer_ships():
     """
     while True:
         random_num = randint(1, 25)
+
         if computer_ships_positions_list.count(random_num) == 0:
             computer_ships_positions_list.append(random_num)
+
         if len(computer_ships_positions_list) == input_number_of_ships:
             break
+
     return computer_ships_positions_list
+
+
+def game_details():
+    """
+    Gives information about the game when the user starts playing
+    Asks the user to enter their name
+    Asks the user to enter the number of ships between 5-10, raises an error otherwise
+    Calls show_the_boards() function
+    Calls computer_ships() function
+    """
+    print("-" * 40)
+    print("Welcome to BATTLESHIPS game\n")
+    print("The top left corner is Column: 1, Row: 1\n")
+    print("-" * 40)
+    global input_name
+    input_name = input("Please enter your name:\n")
+
+    while True:
+        try:
+            global input_number_of_ships
+            input_number_of_ships = int(input(f"Please choose the number of ships, between 5 and 10:\n"))
+
+            if input_number_of_ships > 10 or input_number_of_ships < 5:
+                raise Exception(
+                    "Invalid Data: You must enter an integer between 5 and 10"
+                )
+            print(f"The board has {input_number_of_ships} ships\n")
+            print("-" * 40)
+
+        except ValueError:
+            print("Value Error: You must enter an integer, please try again.\n")
+
+        except Exception as e:
+            print(f"{e}, please try again.\n")
+            print("-" * 40)
+
+        except:
+            print("Error: You must enter an integer between 5 and 10, please try again.\n")
+            
+        else:
+            break
+
+    show_the_boards()
+    computer_ships()
