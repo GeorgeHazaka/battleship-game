@@ -11,8 +11,9 @@ computer_updated_board_list = None
 player_score = 0
 computer_score = 0
 
-player_all_guesses_list = []
 computer_ships_positions_list = []
+player_all_guesses_list = []
+computer_all_guesses_list = []
 
 class Board:
     """
@@ -220,10 +221,11 @@ def check_player_guess():
     Updates the board and prints the updated board
     """
         
-    def indicate_duplicate_coordinates():
+    def indicate_player_duplicate_coordinates():
         """
         Calls player_coordinates_guess() function
         Checks whether the player has already chosen the same coordinates twice
+        If so, then the player will have to guess again
         """
         global player_guess
         player_guess = player_coordinates_guess()
@@ -232,9 +234,9 @@ def check_player_guess():
 
             if player_guess == coordinates:
                 print("You can't guess the same coordinates twice!")
-                indicate_duplicate_coordinates()
+                indicate_player_duplicate_coordinates()
                 
-    indicate_duplicate_coordinates()
+    indicate_player_duplicate_coordinates()
 
     player_all_guesses_list.append(player_guess)
     computer_board_list = [dot for dot in computer_board.print_the_computer_board()]
@@ -309,7 +311,25 @@ def check_computer_guess():
     If it is not equal then the Full stop sign "." will become "X"
     Updates the board and prints the updated board
     """
-    computer_guess = [randint(1, 5), randint(1, 5)]
+
+    def indicate_computer_duplicate_coordinates():
+        """
+        Checks whether the computer has already chosen the same coordinates twice
+        If so, then the computer will have to guess again
+        """
+        global computer_guess
+        computer_guess = [randint(1, 5), randint(1, 5)]
+
+        for coordinates in computer_all_guesses_list:
+
+            if coordinates == computer_guess:
+                computer_guess = [randint(1, 5), randint(1, 5)]
+                indicate_computer_duplicate_coordinates()
+    
+    indicate_computer_duplicate_coordinates()
+
+    computer_all_guesses_list.append(computer_guess)
+
     print(f"Computer guessed ({computer_guess[0]}, {computer_guess[1]})")
     player_board_list = player_board_with_ships.split()
 
@@ -374,7 +394,7 @@ def start_game():
     """
     game_details()
 
-    for i in range(3):
+    for i in range(25):
         check_player_guess()
         check_computer_guess()
         score_results()
