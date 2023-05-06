@@ -76,3 +76,57 @@ def show_the_boards():
 
     print("\nComputer's Board:")
     print(fixed_computer_board)
+
+
+def player_coordinates_guess():
+    """
+    Makes the user to guess a row between 1-5 and raises an error otherwise
+    Makes the user to guess a column between 1-5 and raises an error otherwise
+    Prints the chosen row and column
+    Returns a list of the chosen row and column [row, column]
+    """
+    while True:
+        try:
+            guess_a_row = int(input("Guess a row:\n"))
+
+            if guess_a_row < 1 or guess_a_row > 5:
+                raise Exception(
+                    "Invalid Data: You must enter an integer between 1 and 5"
+                )
+                
+        except ValueError:
+            print("Value Error: You must enter an integer, please try again.\n")
+
+        except Exception as e:
+            print(f"{e}, please try again.\n")
+
+        except:
+            print("Error: You must enter an integer between 1 and 5, please try again.\n")
+
+        else:
+            break
+
+    while True:
+        try:
+            guess_a_column = int(input("Guess a column:\n"))
+
+            if guess_a_column < 1 or guess_a_column > 5:
+                raise Exception(
+                    "Invalid Data: You must enter an integer between 1 and 5"
+                )
+                
+        except ValueError:
+            print("Value Error: You must enter an integer, please try again.\n")
+
+        except Exception as e:
+            print(f"{e}, please try again.\n")
+
+        except:
+            print("Error: You must enter an integer between 1 and 5, please try again.\n")
+
+        else:
+            break
+
+    print(f"Player guessed: ({guess_a_row}, {guess_a_column})")
+
+    return [guess_a_row, guess_a_column]
