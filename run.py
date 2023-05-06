@@ -355,6 +355,29 @@ def check_computer_guess():
 
 
 def score_results():
+    """
+    Prints player's score
+    Prints computer's score
+    """
     print("After this round, the scores are:")
     print(f"{input_name}: {player_score}")
     print(f"{computer_board.name}: {computer_score}")
+
+
+def start_game():
+    """
+    Calls game_details() function
+    Creates a loop and inside it calls the required functions to play the game, which are:
+    - check_player_guess()
+    - check_computer_guess()
+    - score_results()
+    """
+    game_details()
+
+    for i in range(3):
+        check_player_guess()
+        check_computer_guess()
+        score_results()
+
+
+start_game()
