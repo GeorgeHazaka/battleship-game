@@ -2,9 +2,15 @@ from random import randint
 
 input_name = None
 input_number_of_ships = None
+
 player_board_with_ships = None
+player_guess = None
+computer_updated_board_list = None
+
+player_score = 0
 
 computer_ships_positions_list = []
+player_all_guesses_list = []
 
 class Board:
     """
@@ -166,6 +172,7 @@ def game_details():
     print("Welcome to BATTLESHIPS game\n")
     print("The top left corner is Column: 1, Row: 1\n")
     print("-" * 40)
+
     global input_name
     input_name = input("Please enter your name:\n")
 
@@ -178,6 +185,7 @@ def game_details():
                 raise Exception(
                     "Invalid Data: You must enter an integer between 5 and 10"
                 )
+
             print(f"The board has {input_number_of_ships} ships\n")
             print("-" * 40)
 
@@ -196,3 +204,95 @@ def game_details():
 
     show_the_boards()
     computer_ships()
+
+
+def check_player_guess():
+    """
+    Creates a function that checks whether the player
+    has already chosen the same coordinates twice
+    Checks whether player guess position is uqual to one of the computer ships position
+    If it is equal then the dot "." will become "w"
+    Updates the board and prints the updated board
+    player_score gets increased by 1
+    If it is not equal then the dot "." will become "X" and then prints the new board
+    Updates the board and prints the updated board
+    """
+        
+    def indicate_duplicate_coordinates():
+        """
+        Calls player_coordinates_guess() function
+        Checks whether the player has already chosen the same coordinates twice
+        """
+        global player_guess
+        player_guess = player_coordinates_guess()
+
+        for coordinates in player_all_guesses_list:
+
+            if player_guess == coordinates:
+                print("You can't guess the same coordinates twice!")
+                indicate_duplicate_coordinates()
+                
+    indicate_duplicate_coordinates()
+
+    player_all_guesses_list.append(player_guess)
+    computer_board_list = [dot for dot in computer_board.print_the_computer_board()]
+
+    for x in range(5):
+        computer_board_list.remove('\n')
+        
+    global computer_updated_board_list
+
+    if computer_updated_board_list != None:
+        computer_board_list = computer_updated_board_list
+
+    hit = False
+
+    for i in computer_ships_positions_list:
+        """
+        (y * 5 - (5 - x)) - 1
+        This equation is to transform coordinates to a specific position (index)
+        y represents the row
+        x represents the column
+        The number -1 at the end is to make the postion as zero-indexing
+        Both the first and the second number 5 represent the amount of columns the board has
+        """
+
+        if i == player_guess[0] * 5 - (5 - player_guess[1]):
+            print("Player got a hit!")
+            computer_board_list[(player_guess[0] * 5 - (5 - player_guess[1])) - 1] = "w"
+            computer_updated_board_list = [ch for ch in computer_board_list]
+
+            for y in range(len(computer_board_list)):
+                computer_board_list[y] = "  " + computer_board_list[y]
+
+            for j in range(4, 25, 5):
+                computer_board_list[j] += '\n'
+
+            computer_board_list = "".join(computer_board_list)
+            print("-" * 40)
+            print(computer_board_list)
+            print("-" * 40)
+
+            global player_score
+            player_score += 1
+
+            hit = True
+            break
+
+            
+    if hit == False:
+        print("Player missed this time.")
+        computer_board_list[(player_guess[0] * 5 - (5 - player_guess[1])) - 1] = "X"
+        computer_updated_board_list = [dot for dot in computer_board_list]
+
+        for y in range(len(computer_board_list)):
+            computer_board_list[y] = "  " + computer_board_list[y]
+
+        for j in range(4, 25, 5):
+            computer_board_list[j] += '\n'
+
+        computer_board_list = "".join(computer_board_list)
+
+        print("-" * 40)
+        print(computer_board_list)
+        print("-" * 40)
