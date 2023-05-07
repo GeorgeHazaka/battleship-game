@@ -392,8 +392,8 @@ while start_over:
         """
         Asks the user if they want to continue playing the game or quit
         """
-        global cont_or_quit
-        cont_or_quit = input("Enter any key to continue or n to quit:\n")
+        global cont_or_qu
+        cont_or_qu = input("Enter any key to continue or n to quit:\n")
 
 
     def start_game():
@@ -411,7 +411,25 @@ while start_over:
             check_computer_guess()
             score_results()
 
-        if cont_or_quit.lower() == "n" or player_score == input_number_of_ships or computer_score == input_number_of_ships:
+            if player_score == input_number_of_ships and computer_score == input_number_of_ships:
+                print("It Is A Tie")
+                print("Good Luck Next Time")
+
+            elif player_score == input_number_of_ships:
+                print("*" * 40)
+                print(f"CONGRATULATIONS {input_name}")
+                print("You Destroyed All Of The Enemy Ships")
+                print("*" * 40)
+
+            elif computer_score == input_number_of_ships:
+                print("*" * 40)
+                print("GAME OVER")
+                print(f"You Lost {input_name}")
+                print("*" * 40)
+
+            continue_or_quit()
+
+        if cont_or_qu.lower() == "n" or player_score == input_number_of_ships or computer_score == input_number_of_ships:
 
             global start_over
             start_over = True
