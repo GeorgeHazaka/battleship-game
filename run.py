@@ -283,6 +283,9 @@ while start_over:
                 print("Player got a hit!")
                 computer_board_list[(player_guess[0] * 5 - (5 - player_guess[1])) - 1] = "w"
                 computer_updated_board_list = [ch for ch in computer_board_list]
+                # I did it like this because if I make computer_updated_board_list = computer_board_list,
+                # then the computer_updated_board_list
+                # will change everytime computer_board_list gets changed
 
                 for y in range(len(computer_board_list)):
                     computer_board_list[y] = "  " + computer_board_list[y]
