@@ -180,8 +180,24 @@ while start_over:
         print("The top left corner is Column: 1, Row: 1\n")
         print("-" * 40)
 
-        global input_name
-        input_name = input("Please enter your name:\n")
+        while True:
+            try:
+                global input_name
+                input_name = input("Please enter your name:\n")
+
+                if len(input_name.strip()) == 0:
+                    raise Exception(
+                        "Invalid Data: Name field must not remain empty"
+                    )
+
+            except Exception as e:
+                print(f"{e}, please enter your name\n")
+
+            except:
+                print("Error: Please enter your name\n")
+
+            else:
+                break
 
         while True:
             try:
