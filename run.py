@@ -209,39 +209,6 @@ def game_details():
     computer_ships()
 
 
-# game_details()
-
-
-    # def hit_or_miss(symbol, hts, pg, pb):
-
-    #     hts[(pg[0] * 5 - (5 - pg[1])) - 1] = symbol
-
-    #     pb = [dot for dot in hts]
-
-    #     for y in range(len(hts)):
-    #         hts[y] = "  " + hts[y]
-
-    #     for j in range(4, 25, 5):
-    #         hts[j] += '\n'
-
-    #     hts = "".join(hts)
-
-    #     print("-" * 40)
-    #     print(hts)
-
-# def continue_or_quit():
-
-#     global c_or_q
-#     c_or_q = input("Enter any key to continue or n to quit:\n")
-#     if c_or_q.lower() == "n":
-    
-#         global player_all_guesses_list
-#         player_all_guesses_list = []
-
-#     else:
-#         pass
-
-
 def check_player_guess():
     """
     Creates a function that checks whether the player
@@ -298,9 +265,6 @@ def check_player_guess():
             print("Player got a hit!")
             computer_board_list[(player_guess[0] * 5 - (5 - player_guess[1])) - 1] = "w"
             computer_updated_board_list = [ch for ch in computer_board_list]
-            # I did it like this because if I make computer_updated_board_list = computer_board_list,
-            # then the computer_updated_board_list will change
-            # everytime computer_board_list gets changed
 
             for y in range(len(computer_board_list)):
                 computer_board_list[y] = "  " + computer_board_list[y]
@@ -418,6 +382,14 @@ def score_results():
     print("After this round, the scores are:")
     print(f"{input_name}: {player_score}")
     print(f"{computer_board.name}: {computer_score}")
+
+
+def continue_or_quit():
+    """
+    Asks the user if they want to continue playing the game or quit
+    """
+    global c_or_q
+    c_or_q = input("Enter any key to continue or n to quit:\n")
 
 
 def start_game():
