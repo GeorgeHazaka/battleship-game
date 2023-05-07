@@ -414,8 +414,10 @@ while start_over:
             score_results()
 
             if player_score == input_number_of_ships and computer_score == input_number_of_ships:
+                print("*" * 40)
                 print("It Is A Tie")
                 print("Good Luck Next Time")
+                print("*" * 40)
 
             elif player_score == input_number_of_ships:
                 print("*" * 40)
