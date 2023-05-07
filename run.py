@@ -224,7 +224,8 @@ while start_over:
         If it is not equal then the Full stop sign "." will become "X"
         Updates the board and prints the updated board
         """
-            
+
+
         def indicate_player_duplicate_coordinates():
             """
             Calls player_coordinates_guess() function
@@ -239,7 +240,8 @@ while start_over:
                 if player_guess == coordinates:
                     print("You can't guess the same coordinates twice!")
                     indicate_player_duplicate_coordinates()
-                    
+
+
         indicate_player_duplicate_coordinates()
 
         player_all_guesses_list.append(player_guess)
@@ -429,12 +431,12 @@ while start_over:
 
             continue_or_quit()
 
-        if cont_or_qu.lower() == "n" or player_score == input_number_of_ships or computer_score == input_number_of_ships:
+            if cont_or_qu.lower() == "n" or player_score == input_number_of_ships or computer_score == input_number_of_ships:
 
-            global start_over
-            start_over = True
+                global start_over
+                start_over = True
 
-            break
+                break
 
 
     start_game()
