@@ -31,23 +31,23 @@ while start_over:
             self.name = name
             self.yupe = type
 
-        def print_the_player_board(self):
+        def print_the_player_board(self, size):
             """
-            Creates the player board
+            Creates the player board based on the size of the board
             """
-            rows = ""
+            row = ""
             rows_and_columns = ""
 
-            for x in range(0, 5):
-                rows += "."
+            for x in range(0, self.size):
+                row += "."
 
-            for y in range(0, 5):
-                rows_and_columns += rows
+            for y in range(0, self.size):
+                rows_and_columns += row
 
             board_list = [dot for dot in rows_and_columns]
 
             while True:
-                board_list[randint(0, 24)] = "@"
+                board_list[randint(0, self.size ** 2 - 1)] = "@"
 
                 if board_list.count("@") == input_number_of_ships:
                     break
@@ -67,12 +67,12 @@ while start_over:
             """
             Creates the computer board
             """
-            rows = ""
+            row = ""
             rows_and_columns = ""
             for x in range(0, 5):
-                rows += "."
+                row += "."
             for y in range(0, 5):
-                rows_and_columns += rows + "\n"
+                rows_and_columns += row + "\n"
 
             return rows_and_columns
 
@@ -142,7 +142,7 @@ while start_over:
         Shows both the player's board and the computer's board
         """
         global player_board_with_ships
-        player_board_with_ships = player_board.print_the_player_board()
+        player_board_with_ships = player_board.print_the_player_board(player_board.size)
 
         print(f"\n{input_name}'s Board:")
         print(player_board_with_ships)
@@ -160,7 +160,7 @@ while start_over:
         and returns a list of the computer ships positions (indexes)
         """
         while True:
-            random_num = randint(1, 25)
+            random_num = randint(1, computer_board.size ** 2)
 
             if computer_ships_positions_list.count(random_num) == 0:
                 computer_ships_positions_list.append(random_num)
@@ -444,7 +444,7 @@ while start_over:
             elif computer_score == input_number_of_ships:
                 print("*" * 40)
                 print("GAME OVER")
-                print(f"You Lost {input_name}")
+                print(f"Sorry {input_name} You Lost")
                 print("*" * 40)
 
             continue_or_quit()
