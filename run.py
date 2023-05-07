@@ -225,9 +225,6 @@ while start_over:
             else:
                 break
 
-        show_the_boards()
-        computer_ships()
-
 
     def check_player_guess():
         """
@@ -423,8 +420,10 @@ while start_over:
         - score_results()
         """
         game_details()
+        show_the_boards()
+        computer_ships()
 
-        for i in range(25):
+        for i in range(player_board.size ** 2):
             check_player_guess()
             check_computer_guess()
             score_results()
