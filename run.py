@@ -1,8 +1,6 @@
 from random import randint
 
-start_over = True
-
-while start_over:
+while True:
 
     input_name = None
     input_number_of_ships = None
@@ -65,13 +63,13 @@ while start_over:
 
         def print_the_computer_board(self):
             """
-            Creates the computer board
+            Creates the computer board based on the size of the board
             """
             row = ""
             rows_and_columns = ""
-            for x in range(0, 5):
+            for x in range(0, self.size):
                 row += "."
-            for y in range(0, 5):
+            for y in range(0, self.size):
                 rows_and_columns += row + "\n"
 
             return rows_and_columns
@@ -283,9 +281,6 @@ while start_over:
                 print("Player got a hit!")
                 computer_board_list[(player_guess[0] * 5 - (5 - player_guess[1])) - 1] = "w"
                 computer_updated_board_list = [ch for ch in computer_board_list]
-                # I did it like this because if I make computer_updated_board_list = computer_board_list,
-                # then the computer_updated_board_list
-                # will change everytime computer_board_list gets changed
 
                 for y in range(len(computer_board_list)):
                     computer_board_list[y] = "  " + computer_board_list[y]
@@ -453,11 +448,6 @@ while start_over:
             continue_or_quit()
 
             if cont_or_qu.lower() == "n" or player_score == input_number_of_ships or computer_score == input_number_of_ships:
-
-                global start_over
-                start_over = True
-
                 break
-
 
     start_game()
