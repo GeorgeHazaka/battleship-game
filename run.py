@@ -180,7 +180,7 @@ while True:
             try:
                 guess_a_row = int(input("Guess a row:\n"))
 
-                if guess_a_row < 1 or guess_a_row > 5:
+                if guess_a_row < 1 or guess_a_row > computer_board.size:
                     raise Exception(
                         "Invalid Data: You must enter an integer between 1 and 5"
                     )
@@ -201,7 +201,7 @@ while True:
             try:
                 guess_a_column = int(input("Guess a column:\n"))
 
-                if guess_a_column < 1 or guess_a_column > 5:
+                if guess_a_column < 1 or guess_a_column > computer_board.size:
                     raise Exception(
                         "Invalid Data: You must enter an integer between 1 and 5"
                     )
@@ -268,6 +268,7 @@ while True:
         hit = False
 
         for i in computer_ships_positions_list:
+
             """
             (y * 5 - (5 - x)) - 1
             This equation is to transform coordinates to a specific position (index)
@@ -276,7 +277,6 @@ while True:
             The number -1 at the end is to make the postion as zero-indexing
             Both the first and the second number 5 represent the amount of columns the board has
             """
-
             if i == player_guess[0] * 5 - (5 - player_guess[1]):
                 print("Player got a hit!")
                 computer_board_list[(player_guess[0] * 5 - (5 - player_guess[1])) - 1] = "w"
@@ -303,7 +303,7 @@ while True:
         if hit == False:
             print("Player missed this time.")
             computer_board_list[(player_guess[0] * 5 - (5 - player_guess[1])) - 1] = "X"
-            computer_updated_board_list = [dot for dot in computer_board_list]
+            computer_updated_board_list = [ch for ch in computer_board_list]
 
             for y in range(len(computer_board_list)):
                 computer_board_list[y] = "  " + computer_board_list[y]
@@ -334,12 +334,12 @@ while True:
             If so, then the computer will have to guess again
             """
             global computer_guess
-            computer_guess = [randint(1, 5), randint(1, 5)]
+            computer_guess = [randint(1, player_board.size), randint(1, player_board.size)]
 
             for coordinates in computer_all_guesses_list:
 
                 if coordinates == computer_guess:
-                    computer_guess = [randint(1, 5), randint(1, 5)]
+                    computer_guess = [randint(1, player_board.size), randint(1, player_board.size)]
                     indicate_computer_duplicate_coordinates()
         
         indicate_computer_duplicate_coordinates()
