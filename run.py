@@ -480,7 +480,8 @@ while True:
             check_computer_guess()
             score_results()
 
-            if player_score == input_number_of_ships and computer_score == input_number_of_ships:
+            if player_score == input_number_of_ships and\
+               computer_score == input_number_of_ships:
                 print("*" * 40)
                 print("It Is A Tie")
                 print("Good Luck Next Time")
@@ -500,7 +501,9 @@ while True:
 
             continue_or_quit()
 
-            if cont_or_qu.lower() == "n" or player_score == input_number_of_ships or computer_score == input_number_of_ships:
+            if cont_or_qu.lower() == "n" or\
+               player_score == input_number_of_ships or\
+               computer_score == input_number_of_ships:
                 break
 
     start_game()
