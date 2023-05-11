@@ -50,7 +50,9 @@ while True:
                 if board_list.count("@") == input_number_of_ships:
                     break
 
-            for i in range(self.size - 1, self.size ** 2 - self.size, self.size):
+            for i in range(
+                self.size - 1, self.size ** 2 - self.size, self.size
+            ):
                 board_list[i] += "\n"
 
             for i in range(0, self.size ** 2):
@@ -152,7 +154,7 @@ while True:
         print(player_board_with_ships)
 
         fixed_computer_board = (
-            ["  " + dot for dot in\
+            ["  " + dot for dot in
              computer_board.print_the_computer_board(computer_board.size)]
         )
         fixed_computer_board = "".join(fixed_computer_board)
@@ -169,23 +171,27 @@ while True:
             random_num = randint(1, computer_board.size ** 2)
 
             """
-            This if statement is to avoid having multiple ships at the same position
+            This if statement is to avoid having
+            multiple ships at the same position
             """
             if computer_ships_positions_list.count(random_num) == 0:
                 computer_ships_positions_list.append(random_num)
 
             """
-            This if statement is to break the loop when the number 
-            of computer ships are equal to the given number of ships by the user
+            This if statement is to break the loop when
+            the number of computer ships are equal to
+            the given number of ships by the user
             """
             if len(computer_ships_positions_list) == input_number_of_ships:
                 break
 
     def player_coordinates_guess():
         """
-        Makes the user to guess a row between 1 and the size of the computer_board(5),
+        Makes the user to guess a row between
+        1 and the size of the computer_board (5),
         raises an error otherwise
-        Makes the user to guess a column between 1 and the size of the computer_board(5),
+        Makes the user to guess a column between
+        1 and the size of the computer_board (5),
         raises an error otherwise
         Prints the chosen row and column
         Returns a list of the chosen row and column [row, column]
@@ -275,7 +281,8 @@ while True:
 
         player_all_guesses_list.append(player_guess)
         computer_board_list = (
-            [dot for dot in computer_board.print_the_computer_board(computer_board.size)]
+            [dot for dot in
+             computer_board.print_the_computer_board(computer_board.size)]
         )
 
         for x in range(computer_board.size):
@@ -291,28 +298,36 @@ while True:
         for i in computer_ships_positions_list:
 
             """
-            (y * 5 - (5 - x)) - 1
+            (y * z - (z - x)) - 1
             This equation is to transform coordinates
             to a specific position (index)
             - y represents the row
             - x represents the column
+            - z represents the amount of columns the board has
             - The number -1 at the end is to make the postion as zero-indexing
-            - Both the first and the second number 5 represent
-            the amount of columns the board has
             """
-            if i == player_guess[0] * 5 - (5 - player_guess[1]):
+            if i == (
+                player_guess[0] * computer_board.size -
+                (computer_board.size - player_guess[1])
+            ):
                 print("Player got a hit!")
                 computer_board_list[(player_guess[0] *
-                                    5 - (5 - player_guess[1])) - 1] = "*"
+                                    computer_board.size -
+                                    (computer_board.size - player_guess[1])) -
+                                    1] = "*"
                 computer_updated_board_list = (
                     [ch for ch in computer_board_list]
                 )
 
-                for y in range(len(computer_board_list)):
-                    computer_board_list[y] = "  " + computer_board_list[y]
+                for j in range(len(computer_board_list)):
+                    computer_board_list[j] = "  " + computer_board_list[j]
 
-                for j in range(4, 25, 5):
-                    computer_board_list[j] += '\n'
+                for y in range(
+                    computer_board.size - 1,
+                    computer_board.size ** 2,
+                    computer_board.size
+                ):
+                    computer_board_list[y] += '\n'
 
                 computer_board_list = "".join(computer_board_list)
                 print("-" * 40)
