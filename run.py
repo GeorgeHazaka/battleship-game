@@ -27,11 +27,11 @@ while True:
         def __init__(self, size, name, type):
             self.size = size
             self.name = name
-            self.yupe = type
+            self.type = type
 
         def print_the_player_board(self, size):
             """
-            Creates the player board based on the size of the board
+            Creates the player board based on the given size
             """
             row = ""
             rows_and_columns = ""
@@ -50,17 +50,17 @@ while True:
                 if board_list.count("@") == input_number_of_ships:
                     break
 
-            for i in range(4, 20, 5):
+            for i in range(self.size - 1, self.size ** 2 - self.size, self.size):
                 board_list[i] += "\n"
 
-            for i in range(0, 25):
+            for i in range(0, self.size ** 2):
                 board_list[i] = "  " + board_list[i]
 
             player_final_board = "".join(board_list)
 
             return player_final_board
 
-        def print_the_computer_board(self):
+        def print_the_computer_board(self, size):
             """
             Creates the computer board based on the size of the board
             """
@@ -152,7 +152,8 @@ while True:
         print(player_board_with_ships)
 
         fixed_computer_board = (
-            ["  " + dot for dot in computer_board.print_the_computer_board()]
+            ["  " + dot for dot in\
+             computer_board.print_the_computer_board(computer_board.size)]
         )
         fixed_computer_board = "".join(fixed_computer_board)
 
@@ -162,24 +163,29 @@ while True:
     def computer_ships():
         """
         Creates a specific amount of computer ships
-        and returns a list of the computer ships positions (indexes)
+        based on the input_number_of_ships given by the user
         """
         while True:
             random_num = randint(1, computer_board.size ** 2)
 
+            """
+            This if statement is to avoid having multiple ships at the same position
+            """
             if computer_ships_positions_list.count(random_num) == 0:
                 computer_ships_positions_list.append(random_num)
 
+            """
+            This if statement is to break the loop when the number 
+            of computer ships are equal to the given number of ships by the user
+            """
             if len(computer_ships_positions_list) == input_number_of_ships:
                 break
 
-        return computer_ships_positions_list
-
     def player_coordinates_guess():
         """
-        Makes the user to guess a row between 1 and 5,
+        Makes the user to guess a row between 1 and the size of the computer_board(5),
         raises an error otherwise
-        Makes the user to guess a column between 1 and 5,
+        Makes the user to guess a column between 1 and the size of the computer_board(5),
         raises an error otherwise
         Prints the chosen row and column
         Returns a list of the chosen row and column [row, column]
@@ -192,7 +198,7 @@ while True:
                 if guess_a_row < 1 or guess_a_row > computer_board.size:
                     raise Exception(
                         ("Invalid Data: You must enter "
-                         "an integer between 1 and 5")
+                         f"an integer between 1 and {computer_board.size}")
                     )
 
             except ValueError:
@@ -252,8 +258,8 @@ while True:
         def indicate_player_duplicate_coordinates():
             """
             Calls player_coordinates_guess() function
-            Checks whether the player has already
-            guessed the same coordinates twice
+            Creates a loop that checks whether the player
+            has already guessed the same coordinates twice
             If so, then the player will have to guess again
             """
             global player_guess
@@ -269,10 +275,10 @@ while True:
 
         player_all_guesses_list.append(player_guess)
         computer_board_list = (
-            [dot for dot in computer_board.print_the_computer_board()]
+            [dot for dot in computer_board.print_the_computer_board(computer_board.size)]
         )
 
-        for x in range(5):
+        for x in range(computer_board.size):
             computer_board_list.remove('\n')
 
         global computer_updated_board_list
