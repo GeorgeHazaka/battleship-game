@@ -241,7 +241,7 @@ while True:
         Checks whether player guess position is uqual
         to one of the computer ships position
         If it is equal then:
-        - The Full stop sign "." will become "w"
+        - The Full stop sign "." will become "*"
         - Updates the board and prints the updated board
         - player_score variable gets increased by 1
         If it is not equal then:
@@ -297,7 +297,7 @@ while True:
             if i == player_guess[0] * 5 - (5 - player_guess[1]):
                 print("Player got a hit!")
                 computer_board_list[(player_guess[0] *
-                                    5 - (5 - player_guess[1])) - 1] = "w"
+                                    5 - (5 - player_guess[1])) - 1] = "*"
                 computer_updated_board_list = (
                     [ch for ch in computer_board_list]
                 )
@@ -344,7 +344,7 @@ while True:
         Checks whether computer guess position is uqual
         to one of the player ships position
         If it is equal then:
-        - The At sign "@" will become "w"
+        - The At sign "@" will become "*"
         - Updates the board and prints the updated board
         - computer_score variable gets increased by 1
         If it is not equal then:
@@ -388,7 +388,7 @@ while True:
         if player_board_list[(computer_guess[0] *
            5 - (5 - computer_guess[1])) - 1] == "@":
             player_board_list[(computer_guess[0] *
-                              5 - (5 - computer_guess[1])) - 1] = "w"
+                              5 - (5 - computer_guess[1])) - 1] = "*"
             player_updated_board_list = [ch for ch in player_board_list]
             print("Computer got a hit!")
 
