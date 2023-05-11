@@ -104,9 +104,6 @@ while True:
             except Exception as e:
                 print(f"{e}, please enter your name\n")
 
-            except:
-                print("Error: Please enter your name\n")
-
             else:
                 break
 
@@ -138,12 +135,6 @@ while True:
             except Exception as e:
                 print(f"{e}, please try again.\n")
                 print("-" * 40)
-
-            except:
-                print(
-                   ("Error: You must enter an integer "
-                    "between 5 and 10, please try again.\n")
-                )
 
             else:
                 break
@@ -213,12 +204,6 @@ while True:
             except Exception as e:
                 print(f"{e}, please try again.\n")
 
-            except:
-                print(
-                    ("Error: You must enter an integer "
-                     "between 1 and 5, please try again.\n")
-                )
-
             else:
                 break
 
@@ -241,12 +226,6 @@ while True:
 
             except Exception as e:
                 print(f"{e}, please try again.\n")
-
-            except:
-                print(
-                    ("Error: You must enter an integer "
-                     "between 1 and 5, please try again.\n")
-                )
 
             else:
                 break
