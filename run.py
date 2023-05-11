@@ -47,9 +47,20 @@ while True:
             while True:
                 board_list[randint(0, self.size ** 2 - 1)] = "@"
 
+                """
+                This if statement is to break the loop when
+                the amount of "@" (ships) are equal to the
+                amount of the number of ships given by the user
+                """
                 if board_list.count("@") == input_number_of_ships:
                     break
-
+            
+            """
+            This for loop is to transform a list to a board
+            by adding a new line after the required amount
+            of columns in each row
+            Except for the last row, no need to add a new line after it
+            """
             for i in range(
                 self.size - 1, self.size ** 2 - self.size, self.size
             ):
@@ -64,7 +75,7 @@ while True:
 
         def print_the_computer_board(self, size):
             """
-            Creates the computer board based on the size of the board
+            Creates the computer board based on the given size
             """
             row = ""
             rows_and_columns = ""
@@ -84,14 +95,19 @@ while True:
         """
         Gives information about the game when the user starts playing
         Asks the user to enter their name
-        Asks the user to enter the number of ships between 5-10,
-        raises an error otherwise
+        Raises an error if name was empty
+        Asks the user to enter the number of ships between 5 and 10,
+        Raises an error otherwise
         """
         print("-" * 40)
         print("Welcome to BATTLESHIPS game\n")
         print("The top left corner is Row: 1, Column: 1\n")
         print("-" * 40)
 
+        """
+        This while loop is to make sure that
+        the name of the player is not empty
+        """
         while True:
 
             try:
@@ -108,7 +124,12 @@ while True:
 
             else:
                 break
+        
 
+        """
+        This while loop is to makre sure that
+        the user enters a number between 5 and 10
+        """
         while True:
 
             try:
@@ -518,7 +539,7 @@ while True:
             elif player_score == input_number_of_ships:
                 print("*" * 40)
                 print(f"CONGRATULATIONS {input_name}")
-                print("You Destroyed All Of The Enemy Ships")
+                print(f"You Destroyed All Of The {computer_board.name} Ships")
                 print("*" * 40)
 
             elif computer_score == input_number_of_ships:
