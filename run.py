@@ -285,7 +285,7 @@ while True:
              computer_board.print_the_computer_board(computer_board.size)]
         )
 
-        for x in range(computer_board.size):
+        for j in range(computer_board.size):
             computer_board_list.remove('\n')
 
         global computer_updated_board_list
@@ -295,18 +295,18 @@ while True:
 
         hit = False
 
-        for i in computer_ships_positions_list:
+        for position in computer_ships_positions_list:
 
             """
             (y * z - (z - x)) - 1
             This equation is to transform coordinates
-            to a specific position (index)
+            to a specific position (index) in a list
             - y represents the row
             - x represents the column
             - z represents the amount of columns the board has
             - The number -1 at the end is to make the postion as zero-indexing
             """
-            if i == (
+            if position == (
                 player_guess[0] * computer_board.size -
                 (computer_board.size - player_guess[1])
             ):
@@ -319,8 +319,8 @@ while True:
                     [ch for ch in computer_board_list]
                 )
 
-                for j in range(len(computer_board_list)):
-                    computer_board_list[j] = "  " + computer_board_list[j]
+                for x in range(len(computer_board_list)):
+                    computer_board_list[x] = "  " + computer_board_list[x]
 
                 for y in range(
                     computer_board.size - 1,
@@ -343,13 +343,15 @@ while True:
         if hit is False:
             print("Player missed this time.")
             computer_board_list[(player_guess[0] *
-                                5 - (5 - player_guess[1])) - 1] = "X"
+                                computer_board.size -
+                                (computer_board.size - player_guess[1])) -
+                                1] = "X"
             computer_updated_board_list = [ch for ch in computer_board_list]
 
-            for y in range(len(computer_board_list)):
+            for x in range(len(computer_board_list)):
                 computer_board_list[y] = "  " + computer_board_list[y]
 
-            for j in range(4, 25, 5):
+            for y in range(4, 25, 5):
                 computer_board_list[j] += '\n'
 
             computer_board_list = "".join(computer_board_list)
@@ -407,17 +409,25 @@ while True:
             player_board_list = player_updated_board_list
 
         if player_board_list[(computer_guess[0] *
-           5 - (5 - computer_guess[1])) - 1] == "@":
+           player_board.size -
+           (player_board.size - computer_guess[1])) -
+           1] == "@":
             player_board_list[(computer_guess[0] *
-                              5 - (5 - computer_guess[1])) - 1] = "*"
+                              player_board.size -
+                              (player_board.size - computer_guess[1])) -
+                              1] = "*"
             player_updated_board_list = [ch for ch in player_board_list]
             print("Computer got a hit!")
 
-            for j in range(4, 25, 5):
-                player_board_list[j] += '\n'
+            for y in range(
+                player_board.size - 1,
+                player_board.size ** 2,
+                player_board.size
+            ):
+                player_board_list[y] += '\n'
 
-            for y in range(len(player_board_list)):
-                player_board_list[y] = "  " + player_board_list[y]
+            for x in range(len(player_board_list)):
+                player_board_list[x] = "  " + player_board_list[x]
 
             player_board_list = "".join(player_board_list)
             print("-" * 40)
@@ -429,15 +439,21 @@ while True:
 
         else:
             player_board_list[(computer_guess[0] *
-                              5 - (5 - computer_guess[1])) - 1] = "X"
+                              player_board.size -
+                              (player_board.size - computer_guess[1])) -
+                              1] = "X"
             player_updated_board_list = [ch for ch in player_board_list]
             print("Computer missed this time.")
 
-            for j in range(4, 25, 5):
-                player_board_list[j] += '\n'
+            for y in range(
+                player_board.size - 1,
+                player_board.size ** 2,
+                player_board.size
+            ):
+                player_board_list[y] += '\n'
 
-            for y in range(len(player_board_list)):
-                player_board_list[y] = "  " + player_board_list[y]
+            for x in range(len(player_board_list)):
+                player_board_list[x] = "  " + player_board_list[x]
 
             player_board_list = "".join(player_board_list)
             print("-" * 40)
@@ -480,6 +496,14 @@ while True:
             check_computer_guess()
             score_results()
 
+            """
+            - This if statement is for when both the player and
+            the computer destroy all the ships at the same round
+            - The first elif statement is for when the player 
+            destroys all the computer ships before the computer does
+            - The second elif statement is for when the computer
+            destroys all of the player ships before the player does
+            """
             if player_score == input_number_of_ships and\
                computer_score == input_number_of_ships:
                 print("*" * 40)
@@ -501,6 +525,15 @@ while True:
 
             continue_or_quit()
 
+            """
+            This if statement is for when one of the following
+            conditions occur, the game wiill restart
+            1st condition: When the user enters "n" or "N"
+            when they are asked if they want to
+            continue the game or quit it
+            2nd condition: When the user wins
+            3rd condition: When the computer wins
+            """
             if cont_or_qu.lower() == "n" or\
                player_score == input_number_of_ships or\
                computer_score == input_number_of_ships:
