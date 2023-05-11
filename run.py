@@ -349,10 +349,14 @@ while True:
             computer_updated_board_list = [ch for ch in computer_board_list]
 
             for x in range(len(computer_board_list)):
-                computer_board_list[y] = "  " + computer_board_list[y]
+                computer_board_list[x] = "  " + computer_board_list[x]
 
-            for y in range(4, 25, 5):
-                computer_board_list[j] += '\n'
+            for y in range(
+                computer_board.size - 1,
+                computer_board.size ** 2,
+                computer_board.size
+            ):
+                computer_board_list[y] += '\n'
 
             computer_board_list = "".join(computer_board_list)
 
@@ -499,7 +503,7 @@ while True:
             """
             - This if statement is for when both the player and
             the computer destroy all the ships at the same round
-            - The first elif statement is for when the player 
+            - The first elif statement is for when the player
             destroys all the computer ships before the computer does
             - The second elif statement is for when the computer
             destroys all of the player ships before the player does
