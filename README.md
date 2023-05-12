@@ -73,6 +73,16 @@ Please see below, a link to wireframes for the game layout.
 
     ![Player's and computer's scores](documentation/scores-battleships.png)
 
++ #### Asks the user after every round if they want to continue playing or quit
+    + User have two choices:
+        + User enters `n`, in that case the game will quit and restart
+
+            ![game restarts after user entered "n"](documentation/n-quit-the-game-battleships.png)
+
+        + User enters any key other than `n`,  in that case the game will continue
+
+            ![game continues after user entered any key other than "n"](documentation/continue-playing-battleships.png)
+
 + #### Input validation and error-checking
     + User cannot enter an empty name
 
@@ -93,3 +103,7 @@ Please see below, a link to wireframes for the game layout.
     + User cannot guess a row or a column that is lower than 1 or higher than 5
 
         ![invalid guess of row and column](documentation/error-row-column-wrong-number-battleships.png)
+
+    + User cannot enter the same guess (coordinates) twice
+
+        ![cannot guess the same coordinates twice](documentation/error-coordinates-twice.png)
