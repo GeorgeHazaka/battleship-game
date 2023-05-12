@@ -180,7 +180,7 @@ while True:
         )
         fixed_computer_board = "".join(fixed_computer_board)
 
-        print("\nComputer's Board:")
+        print(f"\n{computer_board.name}'s Board:")
         print(fixed_computer_board)
 
     def computer_ships():
@@ -425,7 +425,7 @@ while True:
 
         computer_all_guesses_list.append(computer_guess)
 
-        print(f"Computer guessed ({computer_guess[0]}, {computer_guess[1]})")
+        print(f"{computer_board.name} guessed ({computer_guess[0]}, {computer_guess[1]})")
         player_board_list = player_board_with_ships.split()
 
         global player_updated_board_list
@@ -442,7 +442,7 @@ while True:
                               (player_board.size - computer_guess[1])) -
                               1] = "*"
             player_updated_board_list = [ch for ch in player_board_list]
-            print("Computer got a hit!")
+            print(f"{computer_board.name} got a hit!")
 
             for y in range(
                 player_board.size - 1,
@@ -468,7 +468,7 @@ while True:
                               (player_board.size - computer_guess[1])) -
                               1] = "X"
             player_updated_board_list = [ch for ch in player_board_list]
-            print("Computer missed this time.")
+            print(f"{computer_board.name} missed this time.")
 
             for y in range(
                 player_board.size - 1,
