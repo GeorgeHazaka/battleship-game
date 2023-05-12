@@ -83,6 +83,20 @@ Please see below, a link to wireframes for the game layout.
 
             ![game continues after user entered any key other than "n"](documentation/continue-playing-battleships.png)
 
++ #### Provides informative message when the game ends
+    + Three possible ways that the game would end up with
+        + If the player wins the game, the following message appears
+
+            ![player winning message](documentation/win-message-battleships.png)
+
+        + If the player loses the game, the following message appears
+
+            ![player losing message](documentation/losing-message-battleships.png)
+
+        + If both the player and the computer destroy all of each other ships at the same turn, the following message appears
+
+            ![draw message](documentation/draw-message-battleships.png)
+
 + #### Input validation and error-checking
     + User cannot enter an empty name
 
