@@ -54,7 +54,7 @@ while True:
                 """
                 if board_list.count("@") == input_number_of_ships:
                     break
-            
+
             """
             This for loop is to transform a list to a board
             by adding a new line after the required amount
@@ -124,7 +124,6 @@ while True:
 
             else:
                 break
-        
 
         """
         This while loop is to makre sure that
@@ -425,7 +424,10 @@ while True:
 
         computer_all_guesses_list.append(computer_guess)
 
-        print(f"{computer_board.name} guessed ({computer_guess[0]}, {computer_guess[1]})")
+        print(
+           (f"{computer_board.name} guessed"
+            f"({computer_guess[0]}, {computer_guess[1]})")
+        )
         player_board_list = player_board_with_ships.split()
 
         global player_updated_board_list
