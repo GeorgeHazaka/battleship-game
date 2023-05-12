@@ -46,6 +46,50 @@ Please see below, a link to wireframes for the game layout.
 
 ### Existing Features
 
++ #### Introduction to the game
+
+    ![battleships game introduction](documentation/introduction-battleships.png)
 + #### Accepts user name input
 
+    ![user name input](documentation/input-name-battleships.png)
 + #### Accepts user desired amount of ships (between 5 and 10)
+
+    ![number of battleships input](documentation/input-number-of-ships-battleships.png)
+
++ #### Random board generation
+
+    + Ships are randomly placed on both the player and the computer boards.
+    + The player cannot see where the computer's ships are.
+
+    ![player's board and computer's board](documentation/boards-battleships.png)
+
++ #### Play against the computer
+
++ #### Accepts user desired row and column
+
+    ![Player's guess and the computer's guess and showing both of the boards](documentation/row-and-column-battleships.png)
+
++ #### Maintains scores
+
+    ![Player's and computer's scores](documentation/scores-battleships.png)
+
++ #### Input validation and error-checking
+    + User cannot enter an empty name
+
+        ![empty name error](documentation/error-empty-name-battleships.png)
+
+    + User must enter an integer to the number of ships input
+
+        ![value-error of number of ships](documentation/value-error-number-of-ships-battleships.png)
+
+    + User cannot enter number of ships that is lower than 5 or higher than 10
+
+        ![invalid number error of number of ships](documentation/error-wrong-number-of-ships-battleships.png)
+
+    + User must enter an integer to both the row and column guesses
+
+        ![value-error of row and column](documentation/value-error-row-column-battleships.png)
+
+    + User cannot guess a row or a column that is lower than 1 or higher than 5
+
+        ![invalid guess of row and column](documentation/error-row-column-wrong-number-battleships.png)
