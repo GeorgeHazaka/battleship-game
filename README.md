@@ -58,7 +58,7 @@ Please see below, a link to wireframes for the game layout.
 
 + #### Random board generation
 
-    + Ships are randomly placed on both the player and the computer boards.
+    + Ships are randomly placed on both the player and the computer boards, and the amount of ships is chosen by the user.
     + The player cannot see where the computer's ships are.
 
     ![player's board and computer's board](documentation/boards-battleships.png)
@@ -121,3 +121,25 @@ Please see below, a link to wireframes for the game layout.
     + User cannot enter the same guess (coordinates) twice
 
         ![cannot guess the same coordinates twice](documentation/error-coordinates-twice.png)
+
+### Features Left to Implement
+
++ Allow player to select the board size.
++ Allow player to position ships themselves.
++ Have ships larger than 1x1.
++ Allow players to change diffulty by changing the size of each board separately.
+
+## User Experience
+----
++ **User Story 001:** as a user I want to enter my name.
+    + **Tasks:** when the game starts, it will welcome you to the game with basic information, then it is going to ask you "Please enter your name:" that's when you can type your name and press `Enter` when you are done.
++ **User Story 002:** as a user I want to choose the amount of ships.
+    + **Tasks:** after you type your name, the game will ask you "Please choose the number of ships, between 5 and 10:". That's when you type can type the desired number of ships between 5 and 10 and press `Enter` when you are done.
++ **User Story 003:** as a user I want to choose a row and a column.
+    + **Tasks:** after choosing the desired amount of ships, the game will ask you "Guess a row:" that's when you can type the desired raw number between 1 and 5 and press `Enter` when you are done. After that the game will ask you "Guess a column" that's when you can type the desired column number between 1 and 5 and press `Enter` when you are done.
++ **User Story 004:** as a user I want to see both of my board and the computer board.
+    + **Tasks:** after choosing the desired row and column, the game will show you both of your board and the computer's board, providing information whether you and the computer have missed or got a hit.
++ **User Story 005:** as a user I want to know what is my score and the computer's score.
+    + **Tasks:** after each turn/guess, the game will say "After this round, the score are: " "You: ?, Computer: ?".
++ **User Story 006:** as a user I want to know when I am able to quit the game.
+    + **Tasks:** after each turn/guess and after the game showing you the scores, the game will ask you "Enter any key to continue or "n" to quit". Type `n` and press `Enter`, that will make the game quit and restart. Pressing anything else than `n` will make the game continue.
