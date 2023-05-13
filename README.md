@@ -58,7 +58,7 @@ Please see below, a link to wireframes for the game layout.
     ![board size input](documentation/board-size-input-battleships.png)
 + #### Accepts user desired amount of ships
     + The amount of ships is based on the size of the board.
-    + The amount of ships must be between x and (x^2^ - x), where x represents the size of the board.
+    + The amount of ships must be between x and (x ^2^ - x), where x represents the size of the board.
 
     ![number of battleships input](documentation/number-of-ships-input-battleships.png)
 
@@ -124,7 +124,7 @@ Please see below, a link to wireframes for the game layout.
 
     + User cannot enter number of ships that is:
         + Lower than the board size.
-        + Higher than board size * board size - board size or (x^2^ - x)
+        + Higher than board size * board size - board size or (x ^2^ - x)
 
         ![invalid number error of number of ships input](documentation/error-number-of-ships-battleships.png)
 
@@ -150,8 +150,10 @@ Please see below, a link to wireframes for the game layout.
 ----
 + **User Story 001:** as a user I want to enter my name.
     + **Tasks:** when the game starts, it will welcome you to the game with basic information, then it is going to ask you "Please enter your name:" that's when you can type your name and press `Enter` when you are done.
++ **User Story 002:** as a user I want to choose the board size.
+    + **Tasks:** after you type your name, the game will ask you "Please enter the board size between 3 and 10:". That's when you can type the desired board size between 3 and 10 and press `Enter` when you are done.
 + **User Story 002:** as a user I want to choose the amount of ships.
-    + **Tasks:** after you type your name, the game will ask you "Please choose the number of ships, between 5 and 10:". That's when you can type the desired number of ships between 5 and 10 and press `Enter` when you are done.
+    + **Tasks:** after choosing the board size, the game will ask you "Please choose the number of ships, between (board size) and (board size * board size - board size)". That's when you can type the desired number of ships and press `Enter` when you are done.
 + **User Story 003:** as a user I want to choose a row and a column.
     + **Tasks:** after choosing the desired amount of ships, the game will ask you "Guess a row:" that's when you can type the desired raw number between 1 and 5 and press `Enter` when you are done. After that the game will ask you "Guess a column" that's when you can type the desired column number between 1 and 5 and press `Enter` when you are done.
 + **User Story 004:** as a user I want to see both of my board and the computer's board.
