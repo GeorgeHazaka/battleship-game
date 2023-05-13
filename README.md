@@ -7,14 +7,14 @@ Users can try and sink all of the computer's ships before the computer sinks all
 
 [Here is the live version of my project](https://ultimate-battleship-game.herokuapp.com/)
 
-![Sevelral screen sizes devices showing how the game looks in each of them](documentation/Sk%C3%A4rmbild%20(80).png)
+![Sevelral screen sizes devices showing how the game looks in each of them](documentation/respnsive-battleships.png)
 
 ## How to play
 ----
 
 Ultimate Battleships is based on the classic pen-and-paper game. You can read more about it on [Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game))
 
-In this version, the player enters their name and the desired amount of ships then two boards are randomly generated.
+In this version, the player enters their name, the board size and the desired amount of ships, then two boards are randomly generated.
 
 The player can see where their ships are, indicated by an `@` sign, but cannot see where the computer's ships are.
 
@@ -52,13 +52,19 @@ Please see below, a link to wireframes for the game layout.
 + #### Accepts user name input
 
     ![user name input](documentation/input-name-battleships.png)
-+ #### Accepts user desired amount of ships (between 5 and 10)
 
-    ![number of battleships input](documentation/input-number-of-ships-battleships.png)
++ #### Accepts user desired board size (between 3 and 10)
+
+    ![board size input](documentation/board-size-input-battleships.png)
++ #### Accepts user desired amount of ships
+    + The amount of ships is based on the size of the board.
+    + The amount of ships must be between x and (x^2^ - x), where x represents the size of the board.
+
+    ![number of battleships input](documentation/number-of-ships-input-battleships.png)
 
 + #### Random board generation
 
-    + Ships are randomly placed on both the player and the computer boards, and the amount of ships is chosen by the user.
+    + Ships are randomly placed on both the player and the computer boards, the board size and the amount of ships are chosen by the user.
     + The player cannot see where the computer's ships are.
 
     ![player's board and computer's board](documentation/boards-battleships.png)
@@ -102,13 +108,25 @@ Please see below, a link to wireframes for the game layout.
 
         ![empty name error](documentation/error-empty-name-battleships.png)
 
+    + User must enter an integer to the board size input
+
+        ![value-error of board size input](documentation/value-error-board-size-battleships.png)
+
+    + User cannot enter board size number that is:
+        + Lower than 3
+        + Higher than 10
+
+        ![invalid number error of board size input](documentation/error-board-size-battleships.png)
+
     + User must enter an integer to the number of ships input
 
-        ![value-error of number of ships](documentation/value-error-number-of-ships-battleships.png)
+        ![value-error of number of ships input](documentation/value-error-number-of-ships-battleships.png)
 
-    + User cannot enter number of ships that is lower than 5 or higher than 10
+    + User cannot enter number of ships that is:
+        + Lower than the board size.
+        + Higher than board size * board size - board size or (x^2^ - x)
 
-        ![invalid number error of number of ships](documentation/error-wrong-number-of-ships-battleships.png)
+        ![invalid number error of number of ships input](documentation/error-number-of-ships-battleships.png)
 
     + User must enter an integer to both the row and column guesses
 
@@ -124,7 +142,6 @@ Please see below, a link to wireframes for the game layout.
 
 ### Features Left to Implement
 
-+ Allow player to select the board size.
 + Allow player to position ships themselves.
 + Have ships larger than 1x1.
 + Allow players to change diffulty by changing the size of each board separately.

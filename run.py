@@ -593,20 +593,20 @@ while True:
             if player_score == player_board.num_ships and\
                computer_score == player_board.num_ships:
                 print("*" * 40)
-                print("It Is A Tie")
-                print("Good Luck Next Time")
+                print("It Is A Draw!!")
+                print("Better Luck Next Time!")
                 print("*" * 40)
 
             elif player_score == player_board.num_ships:
                 print("*" * 40)
-                print(f"CONGRATULATIONS {player_board.name}")
-                print(f"You Destroyed All Of The {computer_board.name} Ships")
+                print(f"CONGRATULATIONS {player_board.name}!!")
+                print(f"You Destroyed All Of The {computer_board.name} Ships!")
                 print("*" * 40)
 
             elif computer_score == player_board.num_ships:
                 print("*" * 40)
-                print("GAME OVER")
-                print(f"Sorry {player_board.name} You Lost")
+                print("GAME OVER!!")
+                print(f"Sorry {player_board.name} You Lost!")
                 print("*" * 40)
 
             continue_or_quit()
@@ -619,7 +619,7 @@ while True:
             continue the game or quit it
             - 2nd condition: When the user wins
             - 3rd condition: When the computer wins
-            Note: No need to add a tie condition becuase a tie only occurs
+            Note: No need to add a draw condition becuase a draw only occurs
             when both of the scores are equal to the number of ships,
             which is the same as the 2nd and the 3rd conditions together
             """
