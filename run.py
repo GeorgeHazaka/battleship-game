@@ -67,7 +67,9 @@ while True:
             Except for the last row, no need to add a new line after it
             """
             for i in range(
-                input_board_size - 1, input_board_size ** 2 - input_board_size, input_board_size
+                input_board_size - 1,
+                input_board_size ** 2 - input_board_size,
+                input_board_size
             ):
                 board_list[i] += "\n"
 
@@ -103,7 +105,7 @@ while True:
         Raises an error if name was empty
         Asks the user to enter the desired board size between 3 and 10
         Raises an error otherwise
-        Asks the user to enter the number of ships between 
+        Asks the user to enter the number of ships between
         x and x**2 - x, where x represents the given board size
         Raises an error otherwise
         """
@@ -141,7 +143,9 @@ while True:
 
             try:
                 global input_board_size
-                input_board_size = int(input("Please enter the board size between 3 and 10:\n"))
+                input_board_size = int(input(
+                    "Please enter the board size between 3 and 10:\n"
+                ))
 
                 if input_board_size > 10 or input_board_size < 3:
                     raise Exception(
@@ -180,8 +184,10 @@ while True:
                      f"{input_board_size ** 2 - input_board_size}:\n")
                 ))
 
-                if input_number_of_ships > input_board_size ** 2 - input_board_size or\
-                   input_number_of_ships < input_board_size:
+                if input_number_of_ships >\
+                   input_board_size ** 2 - input_board_size or\
+                   input_number_of_ships <\
+                   input_board_size:
                     raise Exception(
                         ("Invalid Data: You must enter "
                          f"an integer between {input_board_size} and "
