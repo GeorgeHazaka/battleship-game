@@ -16,12 +16,16 @@ while True:
 
     class Board:
         """
-        Main board class. Sets the player's name
+        Main board class. Sets the player's name,
+        the size of the board, the number of ships
         and the board type (player board or computer board)
-        It has two methods:
-        - First method is to create player's board based on the
+        It also has five methods:
+        1. First method is to get the player's name
+        2. Second method is to get the size of the boards
+        3. Third method is to get the amount of ships
+        4. Fourth method is to create player's board based on the
         size and the amount of ships desired by the user
-        - Second method is to create computer's board based on the
+        5. Fifth method is to create computer's board based on the
         size given by the user
         """
         def __init__(self, name, size, num_ships, type):
@@ -35,6 +39,7 @@ while True:
             Asks the user to enter their name
             Creates a loop which makes sure that
             the name of the player is not empty
+            Raises an error otherwise
             """
 
             while True:
