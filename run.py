@@ -24,9 +24,9 @@ while True:
         and the board type (player board or computer board)
         It has two methods:
         - First method is to create player's board based on the
-        given size and the amount of ships desired by the user
+        size and the amount of ships desired by the user
         - Second method is to create computer's board based on the
-        given size by the user
+        size given by the user
         """
         def __init__(self, name, type):
             self.name = name
@@ -35,7 +35,7 @@ while True:
         def print_the_player_board(self):
             """
             Creates the player board based on:
-            - The given size by the user
+            - The size given by the user
             - The desired amount of ships by the user
             """
             row = ""
@@ -101,7 +101,10 @@ while True:
         Gives information about the game when the user starts playing
         Asks the user to enter their name
         Raises an error if name was empty
-        Asks the user to enter the number of ships between 5 and 10,
+        Asks the user to enter the desired board size between 3 and 10
+        Raises an error otherwise
+        Asks the user to enter the number of ships between 
+        x and x**2 - x, where x represents the given board size
         Raises an error otherwise
         """
         print("-" * 40)
@@ -130,6 +133,10 @@ while True:
             else:
                 break
 
+        """
+        This while loop is to make sure that the user
+        chooses the board size between 3 and 10
+        """
         while True:
 
             try:
@@ -158,9 +165,9 @@ while True:
                 break
 
         """
-        This while loop is to make sure that
-        the user enters a number between x and x**2 - x
-        where x presents the given board size by the user
+        This while loop is to make sure that the user
+        enters the number of ships between x and x**2 - x
+        where x presents the board size given by the user
         """
         while True:
 
@@ -173,10 +180,12 @@ while True:
                      f"{input_board_size ** 2 - input_board_size}:\n")
                 ))
 
-                if input_number_of_ships > input_board_size ** 2 - input_board_size or input_number_of_ships < input_board_size:
+                if input_number_of_ships > input_board_size ** 2 - input_board_size or\
+                   input_number_of_ships < input_board_size:
                     raise Exception(
                         ("Invalid Data: You must enter "
-                         f"an integer between {input_board_size} and {input_board_size ** 2 - input_board_size}")
+                         f"an integer between {input_board_size} and "
+                         f"{input_board_size ** 2 - input_board_size}")
                     )
 
                 print(f"The board has {input_number_of_ships} ships\n")
@@ -233,8 +242,8 @@ while True:
 
             """
             This if statement is to break the loop when
-            the number of computer ships are equal to
-            the given number of ships by the user
+            the number of computer ships is equal to
+            the number of ships given by the user
             """
             if len(computer_ships_positions_list) == input_number_of_ships:
                 break
@@ -242,11 +251,11 @@ while True:
     def player_coordinates_guess():
         """
         Makes the user to guess a row between
-        1 and the size of the computer_board (5),
-        raises an error otherwise
+        1 and the board size given by the user
+        Raises an error otherwise
         Makes the user to guess a column between
-        1 and the size of the computer_board (5),
-        raises an error otherwise
+        1 and the board size given by the user
+        Raises an error otherwise
         Prints the chosen row and column
         Returns a list of the chosen row and column [row, column]
         """
@@ -358,6 +367,9 @@ while True:
             - y represents the row
             - x represents the column
             - z represents the amount of columns the board has
+            In this game, due to the amount of rows is always equal
+            to the amound of columns, that means that z is equal to the board
+            size given by the user, because the boards are square shaped
             - The number -1 at the end is to make the postion as zero-indexing
             """
             if position == (
@@ -437,7 +449,7 @@ while True:
             """
             Checks whether the computer has already
             guessed the same coordinates twice
-            If so, then the computer will have to guess again
+            If so, then the computer will make another guess
             """
             global computer_guess
             computer_guess = [
@@ -589,11 +601,14 @@ while True:
             """
             This if statement is for when one of the following
             conditions occur, the game wiill restart
-            1st condition: When the user enters "n" or "N"
+            - 1st condition: When the user enters "n" or "N"
             when they are asked if they want to
             continue the game or quit it
-            2nd condition: When the user wins
-            3rd condition: When the computer wins
+            - 2nd condition: When the user wins
+            - 3rd condition: When the computer wins
+            Note: No need to add a tie condition becuase a tie only occurs
+            when both of the scores are equal to the number of ships,
+            which is the same as the 2nd and the 3rd conditions together
             """
             if cont_or_qu.lower() == "n" or\
                player_score == input_number_of_ships or\
