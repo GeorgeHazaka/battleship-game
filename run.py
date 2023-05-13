@@ -3,6 +3,7 @@ from random import randint
 while True:
 
     input_name = None
+    input_board_size = None
     input_number_of_ships = None
 
     player_board_with_ships = None
@@ -78,15 +79,15 @@ while True:
             Creates the computer board based on the given size
             """
             row = ""
-            rows_and_columns = ""
+            computer_final_board = ""
 
             for x in range(0, self.size):
                 row += "."
 
             for y in range(0, self.size):
-                rows_and_columns += row + "\n"
+                computer_final_board += row + "\n"
 
-            return rows_and_columns
+            return computer_final_board
 
     player_board = Board(5, input_name, "player")
     computer_board = Board(5, "Computer", "computer")
@@ -125,9 +126,28 @@ while True:
             else:
                 break
 
+        while True:
+
+            try:
+                global input_board_size
+                input_board_size = input("Please enter the board size between 3 and 10:\n")
+
+                if input_board_size > 10 or input_board_size < 3:
+                    raise Exception(
+                        ("Invalid Data: You must enter "
+                         "an integer between 3 and 10")
+                    )
+
+            except Exception as e:
+                print(f"{e}, please enter your name\n")
+
+            else:
+                break
+
         """
-        This while loop is to makre sure that
-        the user enters a number between 5 and 10
+        This while loop is to make sure that
+        the user enters a number between x and x**2 - x
+        where x presents the given board size by the user
         """
         while True:
 
@@ -136,7 +156,8 @@ while True:
 
                 input_number_of_ships = int(input(
                     ("Please choose the number of ships, "
-                     "between 5 and 10:\n")
+                     f"between {player_board.size} and "
+                     f"{player_board.size ** 2 - player_board.size}:\n")
                 ))
 
                 if input_number_of_ships > 10 or input_number_of_ships < 5:

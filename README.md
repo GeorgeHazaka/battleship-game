@@ -134,12 +134,21 @@ Please see below, a link to wireframes for the game layout.
 + **User Story 001:** as a user I want to enter my name.
     + **Tasks:** when the game starts, it will welcome you to the game with basic information, then it is going to ask you "Please enter your name:" that's when you can type your name and press `Enter` when you are done.
 + **User Story 002:** as a user I want to choose the amount of ships.
-    + **Tasks:** after you type your name, the game will ask you "Please choose the number of ships, between 5 and 10:". That's when you type can type the desired number of ships between 5 and 10 and press `Enter` when you are done.
+    + **Tasks:** after you type your name, the game will ask you "Please choose the number of ships, between 5 and 10:". That's when you can type the desired number of ships between 5 and 10 and press `Enter` when you are done.
 + **User Story 003:** as a user I want to choose a row and a column.
     + **Tasks:** after choosing the desired amount of ships, the game will ask you "Guess a row:" that's when you can type the desired raw number between 1 and 5 and press `Enter` when you are done. After that the game will ask you "Guess a column" that's when you can type the desired column number between 1 and 5 and press `Enter` when you are done.
-+ **User Story 004:** as a user I want to see both of my board and the computer board.
++ **User Story 004:** as a user I want to see both of my board and the computer's board.
     + **Tasks:** after choosing the desired row and column, the game will show you both of your board and the computer's board, providing information whether you and the computer have missed or got a hit.
 + **User Story 005:** as a user I want to know what is my score and the computer's score.
-    + **Tasks:** after each turn/guess, the game will say "After this round, the score are: " "You: ?, Computer: ?".
+    + **Tasks:** after each turn/guess, the game will say "After this round, the scores are: " "You: ?, Computer: ?".
 + **User Story 006:** as a user I want to know when I am able to quit the game.
-    + **Tasks:** after each turn/guess and after the game showing you the scores, the game will ask you "Enter any key to continue or "n" to quit". Type `n` and press `Enter`, that will make the game quit and restart. Pressing anything else than `n` will make the game continue.
+    + **Tasks:** after each turn/guess and after the game showing you the scores, the game will ask you "Enter any key to continue or "n" to quit". Type `n` and press `Enter`, that will make the game quit and restart. Typing anything else than `n` and pressing `Enter` will make the game continue.
+
+## Data Model
+----
+I decided to use a Board class as my model. The game creates two instances of the Board class to hold the player's and the computer's board.
+
+The Board class stores the board size, the player's name and the board type (player's board or computer's board)
+
+The class also has two methods which are:
+    + `print_the_player_board()` is to create 
