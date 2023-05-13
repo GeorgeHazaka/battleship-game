@@ -65,20 +65,22 @@ while True:
             while True:
 
                 try:
-                    self.size = int(input("Please enter the board size between 3 and 10:\n"))
+                    self.size = int(input(
+                        "Please enter the board size between 3 and 10:\n"
+                    ))
                     computer_board.size = self.size
                     if self.size > 10 or self.size < 3:
                         raise Exception(
-                            ("Invalid Data: You must enter "
-                            "an integer between 3 and 10")
+                            "Invalid Data: You must enter "
+                            "an integer between 3 and 10"
                         )
 
                     print(f"The board size is: {self.size}")
 
                 except ValueError:
                     print(
-                        ("Value Error: You must enter "
-                        "an integer, please try again.\n")
+                        "Value Error: You must enter "
+                        "an integer, please try again.\n"
                     )
 
                 except Exception as e:
@@ -101,16 +103,20 @@ while True:
 
                 try:
                     player_board.num_ships = int(input(
-                        ("Please choose the number of ships, "
+                        "Please choose the number of ships, "
                         f"between {player_board.size} and "
-                        f"{player_board.size ** 2 - player_board.size}:\n")
+                        f"{player_board.size ** 2 - player_board.size}:\n"
                     ))
                     computer_board.num_ships = player_board.num_ships
 
-                    if player_board.num_ships > player_board.size ** 2 - player_board.size or player_board.num_ships < player_board.size:
+                    if player_board.num_ships >\
+                       player_board.size ** 2 - player_board.size or\
+                       player_board.num_ships <\
+                       player_board.size:
                         raise Exception(
-                            ("Invalid Data: You must enter "
-                            f"an integer between {player_board.size} and {player_board.size ** 2 - player_board.size}")
+                            "Invalid Data: You must enter "
+                            f"an integer between {player_board.size} and "
+                            f"{player_board.size ** 2 - player_board.size}"
                         )
 
                     print(f"The board has {player_board.num_ships} ships\n")
@@ -118,8 +124,8 @@ while True:
 
                 except ValueError:
                     print(
-                        ("Value Error: You must enter "
-                        "an integer, please try again.\n")
+                        "Value Error: You must enter "
+                        "an integer, please try again.\n"
                     )
 
                 except Exception as e:
@@ -215,10 +221,10 @@ while True:
         print(f"\n{player_board.name}'s Board:")
         print(player_board_with_ships)
 
-        fixed_computer_board = (
-            ["  " + dot for dot in
-             computer_board.print_the_computer_board()]
-        )
+        fixed_computer_board = ([
+            "  " + dot for dot in
+            computer_board.print_the_computer_board()
+        ])
         fixed_computer_board = "".join(fixed_computer_board)
 
         print(f"\n{computer_board.name}'s Board:")
@@ -265,14 +271,14 @@ while True:
 
                 if guess_a_row < 1 or guess_a_row > computer_board.size:
                     raise Exception(
-                        ("Invalid Data: You must enter "
-                         f"an integer between 1 and {computer_board.size}")
+                        "Invalid Data: You must enter "
+                        f"an integer between 1 and {computer_board.size}"
                     )
 
             except ValueError:
                 print(
-                    ("Value Error: You must enter "
-                     "an integer, please try again.\n")
+                    "Value Error: You must enter "
+                    "an integer, please try again.\n"
                 )
 
             except Exception as e:
@@ -288,14 +294,14 @@ while True:
 
                 if guess_a_column < 1 or guess_a_column > computer_board.size:
                     raise Exception(
-                        ("Invalid Data: You must enter "
-                         f"an integer between 1 and {computer_board.size}")
+                        "Invalid Data: You must enter "
+                        f"an integer between 1 and {computer_board.size}"
                     )
 
             except ValueError:
                 print(
-                    ("Value Error: You must enter "
-                     "an integer, please try again.\n")
+                    "Value Error: You must enter "
+                    "an integer, please try again.\n"
                 )
 
             except Exception as e:
@@ -342,10 +348,10 @@ while True:
         indicate_player_duplicate_coordinates()
 
         player_all_guesses_list.append(player_guess)
-        computer_board_list = (
-            [dot for dot in
-             computer_board.print_the_computer_board()]
-        )
+        computer_board_list = ([
+            dot for dot in
+            computer_board.print_the_computer_board()
+        ])
 
         for j in range(computer_board.size):
             computer_board_list.remove('\n')
@@ -470,8 +476,8 @@ while True:
         computer_all_guesses_list.append(computer_guess)
 
         print(
-           (f"{computer_board.name} guessed"
-            f"({computer_guess[0]}, {computer_guess[1]})")
+            f"{computer_board.name} guessed"
+            f"({computer_guess[0]}, {computer_guess[1]})"
         )
         player_board_list = player_board_with_ships.split()
 
@@ -480,10 +486,10 @@ while True:
         if player_updated_board_list is not None:
             player_board_list = player_updated_board_list
 
-        if player_board_list[(computer_guess[0] *
-           player_board.size -
-           (player_board.size - computer_guess[1])) -
-           1] == "@":
+        if player_board_list[(
+            computer_guess[0] * player_board.size -
+            (player_board.size - computer_guess[1])) -
+             1] == "@":
             player_board_list[(computer_guess[0] *
                               player_board.size -
                               (player_board.size - computer_guess[1])) -
