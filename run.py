@@ -2,10 +2,6 @@ from random import randint
 
 while True:
 
-    input_name = None
-    input_board_size = None
-    input_number_of_ships = None
-
     player_board_with_ships = None
     player_guess = None
     player_updated_board_list = None
@@ -28,9 +24,110 @@ while True:
         - Second method is to create computer's board based on the
         size given by the user
         """
-        def __init__(self, name, type):
+        def __init__(self, name, size, num_ships, type):
             self.name = name
+            self.size = size
+            self.num_ships = num_ships
             self.type = type
+
+        def get_player_name(self):
+            """
+            Asks the user to enter their name
+            Creates a loop which makes sure that
+            the name of the player is not empty
+            """
+
+            while True:
+
+                try:
+                    self.name = input("Please enter your name:\n")
+
+                    if len(self.name.strip()) == 0:
+                        raise Exception(
+                            "Invalid Data: Name field must not remain empty"
+                        )
+
+                except Exception as e:
+                    print(f"{e}, please enter your name\n")
+
+                else:
+                    break
+
+        def get_board_size(self):
+            """
+            Asks the user to enter the desired
+            board size between 3 and 10
+            Creates a while loop which makes sure that the user
+            chooses a board size between 3 and 10
+            Raises an error otherwise
+            """
+
+            while True:
+
+                try:
+                    self.size = int(input("Please enter the board size between 3 and 10:\n"))
+                    computer_board.size = self.size
+                    if self.size > 10 or self.size < 3:
+                        raise Exception(
+                            ("Invalid Data: You must enter "
+                            "an integer between 3 and 10")
+                        )
+
+                    print(f"The board size is: {self.size}")
+
+                except ValueError:
+                    print(
+                        ("Value Error: You must enter "
+                        "an integer, please try again.\n")
+                    )
+
+                except Exception as e:
+                    print(f"{e}, please try again.\n")
+                    print("-" * 40)
+
+                else:
+                    break
+
+        def get_number_of_ships(self):
+            """
+            Asks the user to enter the number of ships between
+            x and x**2 - x, where x represents the given board size
+            Creates a while loop which makes sure that the user
+            enters the number of ships between x and x**2 - x
+            Raises an error otherwise
+            """
+
+            while True:
+
+                try:
+                    player_board.num_ships = int(input(
+                        ("Please choose the number of ships, "
+                        f"between {player_board.size} and "
+                        f"{player_board.size ** 2 - player_board.size}:\n")
+                    ))
+                    computer_board.num_ships = player_board.num_ships
+
+                    if player_board.num_ships > player_board.size ** 2 - player_board.size or player_board.num_ships < player_board.size:
+                        raise Exception(
+                            ("Invalid Data: You must enter "
+                            f"an integer between {player_board.size} and {player_board.size ** 2 - player_board.size}")
+                        )
+
+                    print(f"The board has {player_board.num_ships} ships\n")
+                    print("-" * 40)
+
+                except ValueError:
+                    print(
+                        ("Value Error: You must enter "
+                        "an integer, please try again.\n")
+                    )
+
+                except Exception as e:
+                    print(f"{e}, please try again.\n")
+                    print("-" * 40)
+
+                else:
+                    break
 
         def print_the_player_board(self):
             """
@@ -41,23 +138,23 @@ while True:
             row = ""
             rows_and_columns = ""
 
-            for x in range(0, input_board_size):
+            for x in range(0, self.size):
                 row += "."
 
-            for y in range(0, input_board_size):
+            for y in range(0, self.size):
                 rows_and_columns += row
 
             board_list = [dot for dot in rows_and_columns]
 
             while True:
-                board_list[randint(0, input_board_size ** 2 - 1)] = "@"
+                board_list[randint(0, self.size ** 2 - 1)] = "@"
 
                 """
                 This if statement is to break the loop when
                 the amount of "@" (ships) are equal to the
                 amount of the number of ships given by the user
                 """
-                if board_list.count("@") == input_number_of_ships:
+                if board_list.count("@") == player_board.num_ships:
                     break
 
             """
@@ -65,15 +162,14 @@ while True:
             by adding a new line after the required amount
             of columns in each row
             Except for the last row, no need to add a new line after it
+            And then joins the list to finally become a board
             """
             for i in range(
-                input_board_size - 1,
-                input_board_size ** 2 - input_board_size,
-                input_board_size
+                self.size - 1, self.size ** 2 - self.size, self.size
             ):
                 board_list[i] += "\n"
 
-            for i in range(0, input_board_size ** 2):
+            for i in range(0, self.size ** 2):
                 board_list[i] = "  " + board_list[i]
 
             player_final_board = "".join(board_list)
@@ -87,128 +183,25 @@ while True:
             row = ""
             computer_final_board = ""
 
-            for x in range(0, input_board_size):
+            for x in range(0, self.size):
                 row += "."
 
-            for y in range(0, input_board_size):
+            for y in range(0, self.size):
                 computer_final_board += row + "\n"
 
             return computer_final_board
 
-    player_board = Board(input_name, "player")
-    computer_board = Board("Computer", "computer")
+    player_board = Board(None, None, None, "player")
+    computer_board = Board("Computer", None, None, "computer")
 
     def game_details():
         """
         Gives information about the game when the user starts playing
-        Asks the user to enter their name
-        Raises an error if name was empty
-        Asks the user to enter the desired board size between 3 and 10
-        Raises an error otherwise
-        Asks the user to enter the number of ships between
-        x and x**2 - x, where x represents the given board size
-        Raises an error otherwise
         """
         print("-" * 40)
         print("Welcome to BATTLESHIPS game\n")
         print("The top left corner is Row: 1, Column: 1\n")
         print("-" * 40)
-
-        """
-        This while loop is to make sure that
-        the name of the player is not empty
-        """
-        while True:
-
-            try:
-                global input_name
-                input_name = input("Please enter your name:\n")
-
-                if len(input_name.strip()) == 0:
-                    raise Exception(
-                        "Invalid Data: Name field must not remain empty"
-                    )
-
-            except Exception as e:
-                print(f"{e}, please enter your name\n")
-
-            else:
-                break
-
-        """
-        This while loop is to make sure that the user
-        chooses the board size between 3 and 10
-        """
-        while True:
-
-            try:
-                global input_board_size
-                input_board_size = int(input(
-                    "Please enter the board size between 3 and 10:\n"
-                ))
-
-                if input_board_size > 10 or input_board_size < 3:
-                    raise Exception(
-                        ("Invalid Data: You must enter "
-                         "an integer between 3 and 10")
-                    )
-
-                print(f"The board size is: {input_board_size}")
-
-            except ValueError:
-                print(
-                    ("Value Error: You must enter "
-                     "an integer, please try again.\n")
-                )
-
-            except Exception as e:
-                print(f"{e}, please try again.\n")
-                print("-" * 40)
-
-            else:
-                break
-
-        """
-        This while loop is to make sure that the user
-        enters the number of ships between x and x**2 - x
-        where x presents the board size given by the user
-        """
-        while True:
-
-            try:
-                global input_number_of_ships
-
-                input_number_of_ships = int(input(
-                    ("Please choose the number of ships, "
-                     f"between {input_board_size} and "
-                     f"{input_board_size ** 2 - input_board_size}:\n")
-                ))
-
-                if input_number_of_ships >\
-                   input_board_size ** 2 - input_board_size or\
-                   input_number_of_ships <\
-                   input_board_size:
-                    raise Exception(
-                        ("Invalid Data: You must enter "
-                         f"an integer between {input_board_size} and "
-                         f"{input_board_size ** 2 - input_board_size}")
-                    )
-
-                print(f"The board has {input_number_of_ships} ships\n")
-                print("-" * 40)
-
-            except ValueError:
-                print(
-                    ("Value Error: You must enter "
-                     "an integer, please try again.\n")
-                )
-
-            except Exception as e:
-                print(f"{e}, please try again.\n")
-                print("-" * 40)
-
-            else:
-                break
 
     def show_the_boards():
         """
@@ -219,7 +212,7 @@ while True:
             player_board.print_the_player_board()
         )
 
-        print(f"\n{input_name}'s Board:")
+        print(f"\n{player_board.name}'s Board:")
         print(player_board_with_ships)
 
         fixed_computer_board = (
@@ -234,10 +227,10 @@ while True:
     def computer_ships():
         """
         Creates a specific amount of computer ships
-        based on the input_number_of_ships given by the user
+        based on number of ships given by the user
         """
         while True:
-            random_num = randint(1, input_board_size ** 2)
+            random_num = randint(1, player_board.size ** 2)
 
             """
             This if statement is to avoid having
@@ -251,7 +244,7 @@ while True:
             the number of computer ships is equal to
             the number of ships given by the user
             """
-            if len(computer_ships_positions_list) == input_number_of_ships:
+            if len(computer_ships_positions_list) == player_board.num_ships:
                 break
 
     def player_coordinates_guess():
@@ -270,10 +263,10 @@ while True:
             try:
                 guess_a_row = int(input("Guess a row:\n"))
 
-                if guess_a_row < 1 or guess_a_row > input_board_size:
+                if guess_a_row < 1 or guess_a_row > computer_board.size:
                     raise Exception(
                         ("Invalid Data: You must enter "
-                         f"an integer between 1 and {input_board_size}")
+                         f"an integer between 1 and {computer_board.size}")
                     )
 
             except ValueError:
@@ -293,10 +286,10 @@ while True:
             try:
                 guess_a_column = int(input("Guess a column:\n"))
 
-                if guess_a_column < 1 or guess_a_column > input_board_size:
+                if guess_a_column < 1 or guess_a_column > computer_board.size:
                     raise Exception(
                         ("Invalid Data: You must enter "
-                         f"an integer between 1 and {input_board_size}")
+                         f"an integer between 1 and {computer_board.size}")
                     )
 
             except ValueError:
@@ -354,7 +347,7 @@ while True:
              computer_board.print_the_computer_board()]
         )
 
-        for j in range(input_board_size):
+        for j in range(computer_board.size):
             computer_board_list.remove('\n')
 
         global computer_updated_board_list
@@ -379,13 +372,13 @@ while True:
             - The number -1 at the end is to make the postion as zero-indexing
             """
             if position == (
-                player_guess[0] * input_board_size -
-                (input_board_size - player_guess[1])
+                player_guess[0] * computer_board.size -
+                (computer_board.size - player_guess[1])
             ):
                 print("Player got a hit!")
                 computer_board_list[(player_guess[0] *
-                                    input_board_size -
-                                    (input_board_size - player_guess[1])) -
+                                    computer_board.size -
+                                    (computer_board.size - player_guess[1])) -
                                     1] = "*"
                 computer_updated_board_list = (
                     [ch for ch in computer_board_list]
@@ -395,9 +388,9 @@ while True:
                     computer_board_list[x] = "  " + computer_board_list[x]
 
                 for y in range(
-                    input_board_size - 1,
-                    input_board_size ** 2,
-                    input_board_size
+                    computer_board.size - 1,
+                    computer_board.size ** 2,
+                    computer_board.size
                 ):
                     computer_board_list[y] += '\n'
 
@@ -415,8 +408,8 @@ while True:
         if hit is False:
             print("Player missed this time.")
             computer_board_list[(player_guess[0] *
-                                input_board_size -
-                                (input_board_size - player_guess[1])) -
+                                computer_board.size -
+                                (computer_board.size - player_guess[1])) -
                                 1] = "X"
             computer_updated_board_list = [ch for ch in computer_board_list]
 
@@ -424,9 +417,9 @@ while True:
                 computer_board_list[x] = "  " + computer_board_list[x]
 
             for y in range(
-                input_board_size - 1,
-                input_board_size ** 2,
-                input_board_size
+                computer_board.size - 1,
+                computer_board.size ** 2,
+                computer_board.size
             ):
                 computer_board_list[y] += '\n'
 
@@ -459,16 +452,16 @@ while True:
             """
             global computer_guess
             computer_guess = [
-                randint(1, input_board_size),
-                randint(1, input_board_size),
+                randint(1, player_board.size),
+                randint(1, player_board.size),
             ]
 
             for coordinates in computer_all_guesses_list:
 
                 if coordinates == computer_guess:
                     computer_guess = [
-                        randint(1, input_board_size),
-                        randint(1, input_board_size),
+                        randint(1, player_board.size),
+                        randint(1, player_board.size),
                     ]
                     indicate_computer_duplicate_coordinates()
 
@@ -488,20 +481,20 @@ while True:
             player_board_list = player_updated_board_list
 
         if player_board_list[(computer_guess[0] *
-           input_board_size -
-           (input_board_size - computer_guess[1])) -
+           player_board.size -
+           (player_board.size - computer_guess[1])) -
            1] == "@":
             player_board_list[(computer_guess[0] *
-                              input_board_size -
-                              (input_board_size - computer_guess[1])) -
+                              player_board.size -
+                              (player_board.size - computer_guess[1])) -
                               1] = "*"
             player_updated_board_list = [ch for ch in player_board_list]
             print(f"{computer_board.name} got a hit!")
 
             for y in range(
-                input_board_size - 1,
-                input_board_size ** 2,
-                input_board_size
+                player_board.size - 1,
+                player_board.size ** 2,
+                player_board.size
             ):
                 player_board_list[y] += '\n'
 
@@ -518,16 +511,16 @@ while True:
 
         else:
             player_board_list[(computer_guess[0] *
-                              input_board_size -
-                              (input_board_size - computer_guess[1])) -
+                              player_board.size -
+                              (player_board.size - computer_guess[1])) -
                               1] = "X"
             player_updated_board_list = [ch for ch in player_board_list]
             print(f"{computer_board.name} missed this time.")
 
             for y in range(
-                input_board_size - 1,
-                input_board_size ** 2,
-                input_board_size
+                player_board.size - 1,
+                player_board.size ** 2,
+                player_board.size
             ):
                 player_board_list[y] += '\n'
 
@@ -545,7 +538,7 @@ while True:
         Prints computer's score
         """
         print("After this round, the scores are:")
-        print(f"{input_name}: {player_score}")
+        print(f"{player_board.name}: {player_score}")
         print(f"{computer_board.name}: {computer_score}")
 
     def continue_or_quit():
@@ -567,10 +560,13 @@ while True:
         - score_results()
         """
         game_details()
+        player_board.get_player_name()
+        player_board.get_board_size()
+        player_board.get_number_of_ships()
         show_the_boards()
         computer_ships()
 
-        for i in range(input_board_size ** 2):
+        for i in range(player_board.size ** 2):
             check_player_guess()
             check_computer_guess()
             score_results()
@@ -583,23 +579,23 @@ while True:
             - The second elif statement is for when the computer
             destroys all of the player ships before the player does
             """
-            if player_score == input_number_of_ships and\
-               computer_score == input_number_of_ships:
+            if player_score == player_board.num_ships and\
+               computer_score == player_board.num_ships:
                 print("*" * 40)
                 print("It Is A Tie")
                 print("Good Luck Next Time")
                 print("*" * 40)
 
-            elif player_score == input_number_of_ships:
+            elif player_score == player_board.num_ships:
                 print("*" * 40)
-                print(f"CONGRATULATIONS {input_name}")
+                print(f"CONGRATULATIONS {player_board.name}")
                 print(f"You Destroyed All Of The {computer_board.name} Ships")
                 print("*" * 40)
 
-            elif computer_score == input_number_of_ships:
+            elif computer_score == player_board.num_ships:
                 print("*" * 40)
                 print("GAME OVER")
-                print(f"Sorry {input_name} You Lost")
+                print(f"Sorry {player_board.name} You Lost")
                 print("*" * 40)
 
             continue_or_quit()
@@ -617,8 +613,8 @@ while True:
             which is the same as the 2nd and the 3rd conditions together
             """
             if cont_or_qu.lower() == "n" or\
-               player_score == input_number_of_ships or\
-               computer_score == input_number_of_ships:
+               player_score == player_board.num_ships or\
+               computer_score == player_board.num_ships:
                 break
 
     start_game()
