@@ -179,6 +179,7 @@ Please see below, a link to wireframes for the game layout.
 ## Testing
 ----
 + I have tested that the game works in different browsers: Firefox, Brave, Chrome, Microsoft Edge.
++ I have tested that the game works in my local terminal and the Code Institute Heroku terminal
 + I confirm that all inputs work properly.
 
 ### Manual Testing
@@ -202,3 +203,29 @@ Please see below, a link to wireframes for the game layout.
         | **Empty Name Error** | Please enter your name: | Invalid Data: Name field must not remain empty, please enter your name | Entered an empty space or entered nothing | Invalid Data: Name field must not remain empty, please enter your name |
 
     + ##### Board Size Input Error Testing
+
+        | Error                         | When The Following Message Appears | Expected Error | Action | Result |
+        | ----------------------------- | ---------------------------------- | ------ | ------ | ------ |
+        | **Value Error**               | Please enter the board size between 3 and 10: | Value error: You must enter an integer, please try again | Entered anything but an integer | Value error: You must enter an integer, please try again |
+        | **Out Of Bounds Input Error** | Please enter the board size between 3 and 10: | Invalid Data: You must enter an integer between 3 and 10, please try again | Entered an integer out of bounds | Invalid Data: You must enter an integer between 3 and 10, please try again |
+
+    + ##### Number Of Ships Error Testing
+
+        | Error                         | When The Following Message Appears | Expected Error | Action | Result |
+        | ----------------------------- | ---------------------------------- | ------ | ------ | ------ |
+        | **Value Error**               | Please choose the number of ships, between ? and ?: | Value error: You must enter an integer, please try again | Entered anything but an integer | Value error: You must enter an integer, please try again |
+        | **Out Of Bounds Input Error** | Please choose the number of ships, between ? and ?: | Invalid Data: You must enter an integer between ? and ?, please try again | Entered an integer out of bounds | Invalid Data: You must enter an integer between ? and ?, please try again |
+
+    + ##### Guess A Row Error Testing
+
+        | Error                         | When The Following Message Appears | Expected Error | Action | Result |
+        | ----------------------------- | ---------------------------------- | ------ | ------ | ------ |
+        | **Value Error**               | Guess a row: | Value error: You must enter an integer, please try again | Entered anything but an integer | Value error: You must enter an integer, please try again |
+        | **Out Of Bounds Input Error** | Guess a row: | Invalid Data: You must enter an integer between 1 and ?, please try again | Entered an integer out of bounds | Invalid Data: You must enter an integer between 1 and ?, please try again |
+
+    + ##### Guess A Column Error Testing
+
+        | Error                         | When The Following Message Appears | Expected Error | Action | Result |
+        | ----------------------------- | ---------------------------------- | ------ | ------ | ------ |
+        | **Value Error**               | Guess a column: | Value error: You must enter an integer, please try again | Entered anything but an integer | Value error: You must enter an integer, please try again |
+        | **Out Of Bounds Input Error** | Guess a column: | Invalid Data: You must enter an integer between 1 and ?, please try again | Entered an integer out of bounds | Invalid Data: You must enter an integer between 1 and ?, please try again |
