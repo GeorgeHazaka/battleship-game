@@ -39,7 +39,7 @@ To structure and aid in creating the game, a basic flow diagram was created whic
 
 Please see below, a link to wireframes for the game layout.
 
-[Wireframes]()
+[Wireframes](documentation/Battleships-wireframe.pdf)
 
 ## Features
 ----
