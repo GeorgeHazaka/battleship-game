@@ -174,6 +174,31 @@ Please see below, a link to wireframes for the game layout.
     2. `get_board_size()` is to ask the user to choose a board size
     3. `get_number_of_ships()` is to ask the user to choose number of ships
     4. `print_the_player_board()` is to create the player's board and print it
-    5.  `print_the_computer_board()` is to create the computer's board and print it
+    5. `print_the_computer_board()` is to create the computer's board and print it
 
 ## Testing
+----
++ I have tested that the game works in different browsers: Firefox, Brave, Chrome, Microsoft Edge.
++ I confirm that all inputs work properly.
+
+### Manual Testing
+
++ #### Input Testing
+
+    | Feature                    | When The Following Message Appears | Expect | Action | Result |
+    | -------------------------- | ---------------------------------- | ------ | ------ | ------ |
+    | **Name Input**             | Please enter your name: | Whatever is written in the field, becomes the player's name | Entered a name | Player's name became the entered name |
+    | **Board Size Input**       | Please enter the board size between 3 and 10: | The number written in the field, becomes the board size | Entered a number | Board size became the entered number |
+    | **Number Of Ships Input**  | Please choose the number of ships, between ? and ? | The number written in the field, becomes the number of ships | Entered a number | Number of ships became the entered number |
+    | **Continue Or Quit Input** | Enter any key to continue or n to quit | If `n` is entered, the game quits and restarts | Entered `n` | Game quitted and restarted |
+    | **Continue Or Quit Input** | Enter any key to continue or n to quit | If anything else than `n` is entered, the game continues | Entered anything else than `n` | Game continued |
+
++ #### Input Errors Testing
+
+    + ##### Name Input Error Testing
+
+        | Error                | When The Following Message Appears | Expected Error | Action | Result |
+        | -------------------- | ---------------------------------- | ------ | ------ | ------ |
+        | **Empty Name Error** | Please enter your name: | Invalid Data: Name field must not remain empty, please enter your name | Entered an empty space or entered nothing | Invalid Data: Name field must not remain empty, please enter your name |
+
+    + ##### Board Size Input Error Testing
