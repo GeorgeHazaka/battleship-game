@@ -229,3 +229,32 @@ Please see below, a link to wireframes for the game layout.
         | ----------------------------- | ---------------------------------- | ------ | ------ | ------ |
         | **Value Error**               | Guess a column: | Value error: You must enter an integer, please try again | Entered anything but an integer | Value error: You must enter an integer, please try again |
         | **Out Of Bounds Input Error** | Guess a column: | Invalid Data: You must enter an integer between 1 and ?, please try again | Entered an integer out of bounds | Invalid Data: You must enter an integer between 1 and ?, please try again |
+
+### Validator Testing
+
++ Passed the code through a [PEP8 linter](https://pep8ci.herokuapp.com/) and confirmed that no errors were found.
+
+    ![PEP8 validator](documentation/validator-battleships.png)
+
+### Unfixed Bugs
+
++ No unfixed bugs.
+
+## Deployment
+----
+This project was deployed using Code Institute's mock terminal for Heroku
+
++ Steps for deployment:
+    + Fork or clone this repository
+    + Create a new Heroku app
+    + Set the buildbacks to `python` and `NodeJS` in that order
+    + Link the Heroku app to the repository
+    + Click on **Deploy**
+
+## Credits
+----
+
+### Content
+
++ The idea of the Battleships game was taken from [Portfolio 3: Project Submission](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+PE_PAGPPF+2021_Q2/courseware/b3378fc1159e43e3b70916fdefdfae51/605f34e006594dc4ae19f5e60ec75e2e/)
++ The idea of the Board Class was also taken from [Portfolio 3: Project Submission](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+PE_PAGPPF+2021_Q2/courseware/b3378fc1159e43e3b70916fdefdfae51/605f34e006594dc4ae19f5e60ec75e2e/)
