@@ -107,24 +107,24 @@ while True:
             while True:
 
                 try:
-                    player_board.num_ships = int(input(
+                    self.num_ships = int(input(
                         "Please choose the number of ships, "
-                        f"between {player_board.size} and "
-                        f"{player_board.size ** 2 - player_board.size}:\n"
+                        f"between {self.size} and "
+                        f"{self.size ** 2 - self.size}:\n"
                     ))
-                    computer_board.num_ships = player_board.num_ships
+                    computer_board.num_ships = self.num_ships
 
-                    if player_board.num_ships >\
-                       player_board.size ** 2 - player_board.size or\
-                       player_board.num_ships <\
-                       player_board.size:
+                    if self.num_ships >\
+                       self.size ** 2 - self.size or\
+                       self.num_ships <\
+                       self.size:
                         raise Exception(
                             "Invalid Data: You must enter "
-                            f"an integer between {player_board.size} and "
-                            f"{player_board.size ** 2 - player_board.size}"
+                            f"an integer between {self.size} and "
+                            f"{self.size ** 2 - self.size}"
                         )
 
-                    print(f"The board has {player_board.num_ships} ships\n")
+                    print(f"The board has {self.num_ships} ships\n")
                     print("-" * 40)
 
                 except ValueError:
@@ -165,7 +165,7 @@ while True:
                 the amount of "@" (ships) are equal to the
                 amount of the number of ships given by the user
                 """
-                if board_list.count("@") == player_board.num_ships:
+                if board_list.count("@") == self.num_ships:
                     break
 
             """
@@ -216,7 +216,8 @@ while True:
 
     def show_the_boards():
         """
-        Shows both the player's board and the computer's board
+        Prints the player's name and the player's board underneath
+        Prints the computer's name and the computer's board underneath
         """
         global player_board_with_ships
         player_board_with_ships = (
@@ -255,7 +256,7 @@ while True:
             the number of computer ships is equal to
             the number of ships given by the user
             """
-            if len(computer_ships_positions_list) == player_board.num_ships:
+            if len(computer_ships_positions_list) == computer_board.num_ships:
                 break
 
     def player_coordinates_guess():
@@ -495,10 +496,18 @@ while True:
             computer_guess[0] * player_board.size -
             (player_board.size - computer_guess[1])) -
              1] == "@":
-            player_board_list[(computer_guess[0] *
+            player_board_list[computer_guess[0] *
                               player_board.size -
-                              (player_board.size - computer_guess[1])) -
+                              (player_board.size - computer_guess[1]) -
                               1] = "*"
+
+            """
+            Note: player_board_list is a list, so I could basically type
+            player_updated_board_list = player_board_list
+            But in that case, when the player_board_list gets changed
+            also the player_updated_board_list will be changed
+            That's why I used the List Comprehension here instead
+            """
             player_updated_board_list = [ch for ch in player_board_list]
             print(f"{computer_board.name} got a hit!")
 
@@ -521,10 +530,19 @@ while True:
             computer_score += 1
 
         else:
-            player_board_list[(computer_guess[0] *
+            player_board_list[computer_guess[0] *
                               player_board.size -
-                              (player_board.size - computer_guess[1])) -
+                              (player_board.size - computer_guess[1]) -
                               1] = "X"
+
+            """
+            Note: as I mentioned earlier,
+            player_board_list is a list, so I could basically type
+            player_updated_board_list = player_board_list
+            But in that case, when the player_board_list gets changed
+            also the player_updated_board_list will be changed
+            That's why I used the List Comprehension here instead
+            """
             player_updated_board_list = [ch for ch in player_board_list]
             print(f"{computer_board.name} missed this time.")
 
