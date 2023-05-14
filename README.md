@@ -165,9 +165,15 @@ Please see below, a link to wireframes for the game layout.
 
 ## Data Model
 ----
-I decided to use a Board class as my model. The game creates two instances of the Board class to hold the player's and the computer's board.
++ I decided to use a Board class as my model. The game creates two instances of the Board class to hold the player's and the computer's board.
 
-The Board class stores the board size, the player's name and the board type (player's board or computer's board)
++ The Board class stores the player's name, the board size, number of ships on the board and the board type (player's board or computer's board)
 
-The class also has two methods which are:
-    + `print_the_player_board()` is to create 
++ The class also has 5 methods which are:
+    1. `get_player_name()` is to ask the user to type their name
+    2. `get_board_size()` is to ask the user to choose a board size
+    3. `get_number_of_ships()` is to ask the user to choose number of ships
+    4. `print_the_player_board()` is to create the player's board and print it
+    5.  `print_the_computer_board()` is to create the computer's board and print it
+
+## Testing
