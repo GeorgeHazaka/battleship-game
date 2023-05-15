@@ -6,6 +6,7 @@ while True:
     player_guess = None
     player_updated_board_list = None
     computer_updated_board_list = None
+    play = None
 
     player_score = 0
     computer_score = 0
@@ -575,23 +576,36 @@ while True:
         global cont_or_qu
         cont_or_qu = input("Enter any key to continue or n to quit:\n")
 
+    def play_again():
+        """
+        Asks the user to enter any key
+        """
+        global play
+        play = input("Enter any key to continue:\n")
+
     def start_game():
         """
         Calls game_details() function
         Calls get_player_name() function from player_board
         Calls get_board_size() function from player_board
         Calls get_number_of_ships() function from player_board
+        Calls show_the_boards() function
+        Calls computer_ships() function
         Creates a loop and inside it calls the required
         functions to play the game, which are:
         - check_player_guess()
         - check_computer_guess()
         - score_results()
-        Also inside the loop there are three if statements that
-        - First if statement is to print draw message
-        - Second if statement is to print winning player
-        - Third if statement is to print losing player
-        Then inside the loop the continue_or_quit() function is called
-        Then inside the loop an if statement is created to break the loop
+        Also inside the loop there is one if statement and two elif
+        - The if statement is to print draw message
+        and then it calls the play_again() function
+        - First elif statement is to print player's victory message
+        and then it calls the play_again() function
+        - Second elif statement is to print player's defeat message
+        and then it calls the play_again() function
+        Then inside the loop there are another two if statements
+        - First is to call continue_or_quit()  function
+        - Second is to break the loop
         """
         game_details()
         player_board.get_player_name()
@@ -619,20 +633,28 @@ while True:
                 print("It Is A Draw!!")
                 print("Better Luck Next Time!")
                 print("*" * 40)
+                play_again()
 
             elif player_score == player_board.num_ships:
                 print("*" * 40)
                 print(f"CONGRATULATIONS {player_board.name}!!")
                 print(f"You Destroyed All Of The {computer_board.name} Ships!")
                 print("*" * 40)
+                play_again()
 
             elif computer_score == player_board.num_ships:
                 print("*" * 40)
                 print("GAME OVER!!")
                 print(f"Sorry {player_board.name} You Lost!")
                 print("*" * 40)
+                play_again()
 
-            continue_or_quit()
+            """
+            The function inside this if statement gets called
+            in every loop as long as the game is not finished
+            """
+            if play is None:
+                continue_or_quit()
 
             """
             This if statement is for when one of the following
