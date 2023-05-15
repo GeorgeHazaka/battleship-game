@@ -578,13 +578,20 @@ while True:
     def start_game():
         """
         Calls game_details() function
-        Calls show_the_boards() function
-        Calls computer_ships() function
+        Calls get_player_name() function from player_board
+        Calls get_board_size() function from player_board
+        Calls get_number_of_ships() function from player_board
         Creates a loop and inside it calls the required
         functions to play the game, which are:
         - check_player_guess()
         - check_computer_guess()
         - score_results()
+        Also inside the loop there are three if statements that
+        - First if statement is to print draw message
+        - Second if statement is to print winning player
+        - Third if statement is to print losing player
+        Then inside the loop the continue_or_quit() function is called
+        Then inside the loop an if statement is created to break the loop
         """
         game_details()
         player_board.get_player_name()

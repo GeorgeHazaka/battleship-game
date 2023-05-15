@@ -9,7 +9,7 @@ Users can try and sink all of the computer's ships before the computer sinks all
 
 ![Sevelral screen sizes devices showing how the game looks in each of them](documentation/respnsive-battleships.png)
 
-## Table of Contents
+## Table Of Contents
 ----
 
 + [How To Play](#how-to-play "How To Play")
@@ -165,7 +165,7 @@ Please see below, a link to wireframes for the game layout.
 
     + User cannot enter number of ships that is:
         + Lower than the board size.
-        + Higher than board size * board size - board size or (x ^2^ - x)
+        + Higher than board size * board size - board size or (x * x - x)
 
         ![invalid number error of number of ships input](documentation/error-number-of-ships-battleships.png)
 
