@@ -58,7 +58,7 @@ Please see below, a link to wireframes for the game layout.
     ![board size input](documentation/board-size-input-battleships.png)
 + #### Accepts user desired amount of ships
     + The amount of ships is based on the size of the board.
-    + The amount of ships must be between x and (x ^2^ - x), where x represents the size of the board.
+    + The amount of ships must be between x and (x * x - x), where x represents the size of the board.
 
     ![number of battleships input](documentation/number-of-ships-input-battleships.png)
 
@@ -167,7 +167,7 @@ Please see below, a link to wireframes for the game layout.
 ----
 + I decided to use a Board class as my model. The game creates two instances of the Board class to hold the player's and the computer's board.
 
-+ The Board class stores the player's name, the board size, number of ships on the board and the board type (player's board or computer's board)
++ The Board class stores the player's name, the board size and number of ships on the board and the board.
 
 + The class also has 5 methods which are:
     1. `get_player_name()` is to ask the user to type their name
