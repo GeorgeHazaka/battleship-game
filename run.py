@@ -17,8 +17,7 @@ while True:
     class Board:
         """
         Main board class. Sets the player's name,
-        the size of the board, the number of ships
-        and the board type (player board or computer board)
+        the size of the board and the number of ships
         It also has five methods:
         1. First method is to get the player's name
         2. Second method is to get the size of the boards
@@ -28,11 +27,10 @@ while True:
         5. Fifth method is to create computer's board based on the
         size given by the user
         """
-        def __init__(self, name, size, num_ships, type):
+        def __init__(self, name, size, num_ships):
             self.name = name
             self.size = size
             self.num_ships = num_ships
-            self.type = type
 
         def get_player_name(self):
             """
@@ -202,8 +200,8 @@ while True:
 
             return computer_final_board
 
-    player_board = Board(None, None, None, "player")
-    computer_board = Board("Computer", None, None, "computer")
+    player_board = Board(None, None, None)
+    computer_board = Board("Computer", None, None)
 
     def game_details():
         """
