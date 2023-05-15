@@ -33,13 +33,13 @@ The winner is the player who sinks all of their opponent's ships first.
 
 To structure and aid in creating the game, a basic flow diagram was created which is linked below.
 
-[Flow Diagram](documentation/Battleships-diagram.pdf)
+[Flow Diagram](documentation/battleships-diagram.pdf)
 
 ### Wireframes
 
 Please see below, a link to wireframes for the game layout.
 
-[Wireframes](documentation/Battleships-wireframe.pdf)
+[Wireframes](documentation/battleships-wireframe.pdf)
 
 ## Features
 ----
