@@ -9,6 +9,44 @@ Users can try and sink all of the computer's ships before the computer sinks all
 
 ![Sevelral screen sizes devices showing how the game looks in each of them](documentation/respnsive-battleships.png)
 
+## Table of Contents
+----
+
++ [How To Play](#how-to-play "How To Play")
++ [Design](#design "Design")
+    + [Flow Diagram](#flow-diagram "Flow Diagram")
+    + [Wireframes](#wireframes "Wireframes")
++ [Features](#features "Features")
+    + [Existing Features](#existing-features "Existing Features")
+        + [Introduction To The Game](#introduction-to-the-game "Introduction To The Game")
+        + [Accepts User Name Input](#accepts-user-name-input "Accepts User Name Input")
+        + [Accepts User Desired Board Size](#accepts-user-desired-board-size "Accepts User Desired Board Size")
+        + [Accepts User Desired Amount Of Ships](#accepts-user-desired-amount-of-ships "Accepts User Desired Amount Of Ships")
+        + [Random Board Generation](#random-board-generation "Random Board Generation")
+        + [Play Against The Computer](#play-against-the-computer "Play Against The Computer")
+        + [Accepts User Desired Row And Column](#accepts-user-desired-row-and-column "Accepts User Desired Row And Column")
+        + [Maintains Scores](#maintains-scores "Maintains Scores")
+        + [Asks The User To Continue Playing Or Quit](#asks-the-user-to-continue-playing-or-quit "Asks The User To Continue Playing Or Quit")
+        + [Provides Informative Message When The Game Ends](#provides-informative-message-when-the-game-ends "Provides Informative Message When The Game Ends")
+        + [Input Validation And Error-checking](#input-validation-and-error-checking "Input Validation And Error-checking")
+    + [Features Left to Implement](#features-left-to-implement "Features Left to Implement")
++ [User Experience](#user-experience "User Experience")
++ [Data Model](#data-model "Data Model")
++ [Testing](#testing "Testing")
+    + [Manual Testing](#manual-testing "Manual Testing")
+        + [Input Testing](#input-testing "Input Testing")
+        + [Input Errors Testing](#input-errors-testing "Input Errors Testing")
+            + [Name Input Error Testing](#name-input-error-testing "Name Input Error Testing")
+            + [Board Size Input Error Testing](#board-size-input-error-testing "Board Size Input Error Testing")
+            + [Number Of Ships Error Testing](#number-of-ships-error-testing "Number Of Ships Error Testing")
+            + [Guess A Row Error Testing](#guess-a-row-error-testing "Guess A Row Error Testing")
+            + [Guess A Column Error Testing](#guess-a-column-error-testing "Guess A Column Error Testing")
+    + [Validator Testing](#validator-testing "Validator Testing")
+    + [Unfixed Bugs](#unfixed-bugs "Unfixed Bugs")
++ [Deployment](#deployment "Deployment")
++ [Credits](#credits "Credits")
+    + [Content](#content "Content")
+
 ## How to play
 ----
 
@@ -46,40 +84,43 @@ Please see below, a link to wireframes for the game layout.
 
 ### Existing Features
 
-+ #### Introduction to the game
++ #### Introduction To The Game
 
     ![battleships game introduction](documentation/introduction-battleships.png)
-+ #### Accepts user name input
++ #### Accepts User Name Input
 
     ![user name input](documentation/input-name-battleships.png)
 
-+ #### Accepts user desired board size (between 3 and 10)
++ #### Accepts User Desired Board Size
+    + User can choose a board size between 3 and 10
 
     ![board size input](documentation/board-size-input-battleships.png)
-+ #### Accepts user desired amount of ships
++ #### Accepts User Desired Amount Of Ships
     + The amount of ships is based on the size of the board.
     + The amount of ships must be between x and (x * x - x), where x represents the size of the board.
 
     ![number of battleships input](documentation/number-of-ships-input-battleships.png)
 
-+ #### Random board generation
++ #### Random Board Generation
 
     + Ships are randomly placed on both the player and the computer boards, the board size and the amount of ships are chosen by the user.
     + The player cannot see where the computer's ships are.
 
     ![player's board and computer's board](documentation/boards-battleships.png)
 
-+ #### Play against the computer
++ #### Play Against The Computer
 
-+ #### Accepts user desired row and column
++ #### Accepts User Desired Row And Column
 
     ![Player's guess and the computer's guess and showing both of the boards](documentation/row-and-column-battleships.png)
 
-+ #### Maintains scores
++ #### Maintains Scores
 
     ![Player's and computer's scores](documentation/scores-battleships.png)
 
-+ #### Asks the user after every round if they want to continue playing or quit
++ #### Asks The User To Continue Playing Or Quit
+
+    + After every round the user is asked whether they want to continue playing or quit the game.
     + User have two choices:
         + User enters `n`, in that case the game will quit and restart
 
@@ -89,7 +130,7 @@ Please see below, a link to wireframes for the game layout.
 
             ![game continues after user entered any key other than "n"](documentation/continue-playing-battleships.png)
 
-+ #### Provides informative message when the game ends
++ #### Provides Informative Message When The Game Ends
     + Three possible ways that the game would end up with
         + If the player wins the game, the following message appears
 
@@ -103,7 +144,7 @@ Please see below, a link to wireframes for the game layout.
 
             ![draw message](documentation/draw-message-battleships.png)
 
-+ #### Input validation and error-checking
++ #### Input Validation And Error-checking
     + User cannot enter an empty name
 
         ![empty name error](documentation/error-empty-name-battleships.png)
@@ -140,7 +181,7 @@ Please see below, a link to wireframes for the game layout.
 
         ![cannot guess the same coordinates twice](documentation/error-coordinates-twice.png)
 
-### Features Left to Implement
+### Features Left To Implement
 
 + Allow player to position ships themselves.
 + Have ships larger than 1x1.
@@ -167,7 +208,7 @@ Please see below, a link to wireframes for the game layout.
 ----
 + I decided to use a Board class as my model. The game creates two instances of the Board class to hold the player's and the computer's board.
 
-+ The Board class stores the player's name, the board size and number of ships on the board and the board.
++ The Board class stores the player's name, the board size and number of ships on the board.
 
 + The class also has 5 methods which are:
     1. `get_player_name()` is to ask the user to type their name
