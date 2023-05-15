@@ -138,7 +138,7 @@ Please see below, a link to wireframes for the game layout.
 
         + If the player loses the game, the following message appears
 
-            ![player losing message](documentation/losing-message-battleships.png)
+            ![player losing message](documentation/lose-message-battleships.png)
 
         + If both the player and the computer destroy all of each other ships at the same turn, the following message appears
 
@@ -229,11 +229,12 @@ Please see below, a link to wireframes for the game layout.
 
     | Feature                    | When The Following Message Appears | Expect | Action | Result |
     | -------------------------- | ---------------------------------- | ------ | ------ | ------ |
-    | **Name Input**             | Please enter your name: | Whatever is written in the field, becomes the player's name | Entered a name | Player's name became the entered name |
-    | **Board Size Input**       | Please enter the board size between 3 and 10: | The number written in the field, becomes the board size | Entered a number | Board size became the entered number |
+    | **Name Input**             | Please enter your name | Whatever is written in the field, becomes the player's name | Entered a name | Player's name became the entered name |
+    | **Board Size Input**       | Please enter the board size between 3 and 10 | The number written in the field, becomes the board size | Entered a number | Board size became the entered number |
     | **Number Of Ships Input**  | Please choose the number of ships, between ? and ? | The number written in the field, becomes the number of ships | Entered a number | Number of ships became the entered number |
     | **Continue Or Quit Input** | Enter any key to continue or n to quit | If `n` is entered, the game quits and restarts | Entered `n` | Game quitted and restarted |
     | **Continue Or Quit Input** | Enter any key to continue or n to quit | If anything else than `n` is entered, the game continues | Entered anything else than `n` | Game continued |
+    | **Play Again Input** | Enter any key to continue | Game starts again | Entered anything | Game started again |
 
 + #### Input Errors Testing
 
